@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спецпропозиції — ULTRA TV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-gradient-bg">
+
+<header class="main-header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            ULTRA<em>TV</em>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="offers.html" class="active">Спецпропозиції</a></li>
+                <li><a href="contacts.html">Підтримка</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions auth-buttons">
+            <a href="cart.html" class="header-cart-btn" title="Кошик">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge" id="cartCountBadge">0</span>
+            </a>
+            <a href="#" class="btn-ghost" id="openLoginModal"><i class="fas fa-user"></i> Увійти</a>
+            <a href="#" class="btn-primary" id="openRegisterModal">Реєстрація</a>
+        </div>
+    </div>
+</header>
+
+<main class="offers-page container">
+
+    <!-- PROMO BANNER -->
+    <section class="promo-banner">
+        <div class="promo-badge">🔥 ГАРЯЧИЙ РОЗПРОДАЖ</div>
+        <h1 class="promo-title">OLED Week: Знижки до <span style="color:#fbbf24">-40%</span></h1>
+        <p style="color:rgba(255,255,255,0.7);margin-top:8px;font-size:16px">До завершення акції на топові моделі Samsung та LG залишилось:</p>
+
+        <div class="countdown-container">
+            <div class="timer-item">
+                <h2 id="days">02</h2>
+                <span>Днів</span>
+            </div>
+            <div class="timer-item">
+                <h2 id="hours">23</h2>
+                <span>Год</span>
+            </div>
+            <div class="timer-item">
+                <h2 id="minutes">59</h2>
+                <span>Хв</span>
+            </div>
+            <div class="timer-item">
+                <h2 id="seconds">41</h2>
+                <span>Сек</span>
+            </div>
+        </div>
+
+        <div style="margin-top:30px;position:relative;z-index:2;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="catalog.html" class="btn-hero-outline" style="font-family:'Syne',sans-serif;font-size:14px">
+                <i class="fas fa-th-large"></i> Весь каталог
+            </a>
+            <a href="contacts.html" class="btn-ghost" style="font-size:14px">
+                <i class="fas fa-headset"></i> Консультація
+            </a>
+        </div>
+    </section>
+
+    <!-- OFFER CARDS -->
+    <section>
+        <div style="margin-bottom:32px;display:flex;align-items:center;gap:16px">
+            <div class="section-tag">Акційні пропозиції</div>
+            <h2 style="font-family:'Syne',sans-serif;font-size:28px;letter-spacing:-0.5px">Вигідні покупки</h2>
+        </div>
+
+        <div class="offers-grid">
+
+            <div class="offer-card">
+                <div class="discount-tag">-30%</div>
+                <img src="pic/w1.webp" alt="Samsung Neo QLED" class="offer-img">
+                <div class="offer-content">
+                    <h3>Samsung Neo QLED 4K</h3>
+                    <p>65", 120Hz, AI Processor, HDR10+</p>
+                    <div class="price-wrapper">
+                        <span class="old-price">75,999 грн</span>
+                        <span class="new-price">52,499 грн</span>
+                    </div>
+                    <div style="display:flex;gap:8px;margin-bottom:16px">
+                        <span style="background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.2);color:var(--primary);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Neo QLED</span>
+                        <span style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:var(--green);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">В наявності</span>
+                    </div>
+                    <button class="buy-now-btn add-to-cart-offer"
+                        data-name="Samsung Neo QLED 4K" data-price="52499" data-img="pic/w1.webp">
+                        <i class="fas fa-cart-plus"></i> Купити зараз
+                    </button>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <div class="discount-tag">-25%</div>
+                <img src="pic/w3 (3).webp" alt="LG OLED" class="offer-img">
+                <div class="offer-content">
+                    <h3>LG OLED C3 55"</h3>
+                    <p>Perfect Black, HDMI 2.1, WebOS 23</p>
+                    <div class="price-wrapper">
+                        <span class="old-price">64,500 грн</span>
+                        <span class="new-price">48,375 грн</span>
+                    </div>
+                    <div style="display:flex;gap:8px;margin-bottom:16px">
+                        <span style="background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);color:#9f7aea;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">OLED</span>
+                        <span style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:var(--green);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Хіт продажів</span>
+                    </div>
+                    <button class="buy-now-btn add-to-cart-offer"
+                        data-name="LG OLED C3 55&quot;" data-price="48375" data-img="pic/w3 (3).webp">
+                        <i class="fas fa-cart-plus"></i> Купити зараз
+                    </button>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <div class="discount-tag">-40%</div>
+                <img src="pic/w3.webp" alt="Xiaomi TV" class="offer-img">
+                <div class="offer-content">
+                    <h3>Xiaomi Mi TV P1 55"</h3>
+                    <p>4K UHD, Android TV, Frameless</p>
+                    <div class="price-wrapper">
+                        <span class="old-price">22,000 грн</span>
+                        <span class="new-price">13,200 грн</span>
+                    </div>
+                    <div style="display:flex;gap:8px;margin-bottom:16px">
+                        <span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);color:var(--gold);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Найкраща ціна</span>
+                        <span style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:var(--green);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">В наявності</span>
+                    </div>
+                    <button class="buy-now-btn add-to-cart-offer"
+                        data-name="Xiaomi Mi TV P1 55&quot;" data-price="13200" data-img="pic/w3.webp">
+                        <i class="fas fa-cart-plus"></i> Купити зараз
+                    </button>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <div class="discount-tag">-20%</div>
+                <img src="pic/w3 (12).webp" alt="Philips OLED" class="offer-img">
+                <div class="offer-content">
+                    <h3>Philips OLED808 55"</h3>
+                    <p>Ambilight 3-сторонній, P5 AI</p>
+                    <div class="price-wrapper">
+                        <span class="old-price">67,500 грн</span>
+                        <span class="new-price">54,000 грн</span>
+                    </div>
+                    <div style="display:flex;gap:8px;margin-bottom:16px">
+                        <span style="background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);color:#9f7aea;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Ambilight</span>
+                        <span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:var(--red);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Обмежено</span>
+                    </div>
+                    <button class="buy-now-btn add-to-cart-offer"
+                        data-name="Philips OLED808 55&quot;" data-price="54000" data-img="pic/w3 (12).webp">
+                        <i class="fas fa-cart-plus"></i> Купити зараз
+                    </button>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <div class="discount-tag">-15%</div>
+                <img src="pic/w3 (8).webp" alt="Sony Bravia" class="offer-img">
+                <div class="offer-content">
+                    <h3>Sony Bravia A80L 55"</h3>
+                    <p>OLED, XR Triluminos Pro</p>
+                    <div class="price-wrapper">
+                        <span class="old-price">70,599 грн</span>
+                        <span class="new-price">59,999 грн</span>
+                    </div>
+                    <div style="display:flex;gap:8px;margin-bottom:16px">
+                        <span style="background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.2);color:var(--primary);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Sony XR</span>
+                        <span style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:var(--green);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">В наявності</span>
+                    </div>
+                    <button class="buy-now-btn add-to-cart-offer"
+                        data-name="Sony Bravia A80L 55&quot;" data-price="59999" data-img="pic/w3 (8).webp">
+                        <i class="fas fa-cart-plus"></i> Купити зараз
+                    </button>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <div class="discount-tag">-35%</div>
+                <img src="pic/w3 (2).webp" alt="Samsung The Frame" class="offer-img">
+                <div class="offer-content">
+                    <h3>Samsung The Frame 50"</h3>
+                    <p>Art Mode, QLED, Matte Display</p>
+                    <div class="price-wrapper">
+                        <span class="old-price">61,537 грн</span>
+                        <span class="new-price">39,999 грн</span>
+                    </div>
+                    <div style="display:flex;gap:8px;margin-bottom:16px">
+                        <span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);color:var(--gold);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Design TV</span>
+                        <span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:var(--red);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Останні 3 шт</span>
+                    </div>
+                    <button class="buy-now-btn add-to-cart-offer"
+                        data-name="Samsung The Frame 50&quot;" data-price="39999" data-img="pic/w3 (2).webp">
+                        <i class="fas fa-cart-plus"></i> Купити зараз
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INFO STRIP -->
+    <section style="margin-top:60px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:40px 50px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px">
+        <div style="display:flex;align-items:center;gap:16px">
+            <div style="width:50px;height:50px;background:rgba(79,142,247,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--primary);flex-shrink:0">
+                <i class="fas fa-truck"></i>
+            </div>
+            <div>
+                <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:4px">Безкоштовна доставка</div>
+                <div style="font-size:13px;color:var(--text-dim)">По всій Україні</div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+            <div style="width:50px;height:50px;background:rgba(245,158,11,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--gold);flex-shrink:0">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div>
+                <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:4px">5 років гарантії</div>
+                <div style="font-size:13px;color:var(--text-dim)">На всі моделі</div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+            <div style="width:50px;height:50px;background:rgba(34,197,94,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--green);flex-shrink:0">
+                <i class="fas fa-undo"></i>
+            </div>
+            <div>
+                <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:4px">30 днів повернення</div>
+                <div style="font-size:13px;color:var(--text-dim)">Без зайвих питань</div>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+            <div style="width:50px;height:50px;background:rgba(124,58,237,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#9f7aea;flex-shrink:0">
+                <i class="fas fa-headset"></i>
+            </div>
+            <div>
+                <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:4px">Підтримка 24/7</div>
+                <div style="font-size:13px;color:var(--text-dim)">0 800 333 44 55</div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="main-footer">
+    <div class="container footer-grid">
+        <div class="f-col-brand">
+            <a href="index.html" class="logo"><div class="logo-icon"><i class="fas fa-bolt"></i></div>ULTRA<em>TV</em></a>
+            <p>Ваш провідник у світ надвисокої чіткості.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+        <div class="f-col-links"><h4>Каталог</h4><ul><li><a href="catalog.html">OLED ТВ</a></li><li><a href="catalog.html">QLED серія</a></li></ul></div>
+        <div class="f-col-links"><h4>Компанія</h4><ul><li><a href="#">Про нас</a></li><li><a href="contacts.html">Контакти</a></li></ul></div>
+        <div class="f-col-links"><h4>Підтримка</h4><ul><li><a href="contacts.html">Служба підтримки</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="container footer-bottom"><p>© 2026 ULTRA TV. Дипломний проєкт.</p><p>Всі права захищені</p></div>
+</footer>
+
+<a href="cart.html" class="floating-cart" id="floatingCartBtn">
+    <i class="fas fa-shopping-bag"></i>
+    <span class="cart-badge" id="cartCountBadge">0</span>
+</a>
+<button class="scroll-top-btn" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-close" onclick="closeModal('loginModal')"><i class="fas fa-times"></i></div>
+        <div class="auth-card">
+            <div class="auth-header">
+                <a href="#" class="auth-logo"><div class="auth-logo-icon"><i class="fas fa-bolt"></i></div><span class="auth-logo-text">ULTRA<b>TV</b></span></a>
+                <h2 class="auth-title">Ласкаво просимо</h2>
+            </div>
+            <form id="loginFormModal">
+                <div class="input-field"><label>Email</label><input type="email" id="loginEmail" placeholder="your@email.com" required></div>
+                <div class="input-field"><label>Пароль</label><input type="password" id="loginPassword" placeholder="••••••••" required></div>
+                <button type="submit" class="auth-btn">Увійти</button>
+            </form>
+            <div class="auth-switch">Немає акаунту? <a onclick="switchToRegister()">Створити</a></div>
+        </div>
+    </div>
+</div>
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-close" onclick="closeModal('registerModal')"><i class="fas fa-times"></i></div>
+        <div class="auth-card">
+            <div class="auth-header">
+                <a href="#" class="auth-logo"><div class="auth-logo-icon"><i class="fas fa-bolt"></i></div><span class="auth-logo-text">ULTRA<b>TV</b></span></a>
+                <h2 class="auth-title">Реєстрація</h2>
+            </div>
+            <form id="registerFormModal">
+                <div class="input-field"><label>Ім'я</label><input type="text" id="regUsername" placeholder="Ваше ім'я" required></div>
+                <div class="input-field"><label>Email</label><input type="email" id="regEmail" placeholder="your@email.com" required></div>
+                <div class="input-field"><label>Пароль</label><input type="password" id="regPassword" placeholder="••••••••" required></div>
+                <div class="input-field"><label>Підтвердити пароль</label><input type="password" id="regPasswordConfirm" placeholder="••••••••" required></div>
+                <button type="submit" class="auth-btn">Зареєструватися</button>
+            </form>
+            <div class="auth-switch">Вже є акаунт? <a onclick="switchToLogin()">Увійти</a></div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

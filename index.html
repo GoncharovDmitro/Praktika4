@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULTRA TV | Магазин преміальних телевізорів</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="container header-container">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>ULTRA<b>TV</b></span>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Головна</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="offers.html">Спецпропозиції</a></li>
+                <li><a href="contacts.html">Підтримка</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#" class="btn-text" id="openLoginModal">Увійти</a>
+            <a href="#" class="btn-glass" id="openRegisterModal">Реєстрація</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>ULTRA<b>TV</b></span>
+        </div>
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <ul class="mobile-nav-links">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="catalog.html">Каталог</a></li>
+        <li><a href="offers.html">Спецпропозиції</a></li>
+        <li><a href="contacts.html">Підтримка</a></li>
+    </ul>
+</div>
+
+<section class="hero-v3 dark-gradient-bg">
+    <div class="container hero-content">
+        <div class="hero-info">
+            <div class="top-label">✨ МАЙБУТНЄ ВЖЕ ТУТ</div>
+            <h1>Екрани, що <br><span class="gradient-text">змінюють реальність</span></h1>
+            <p>Відчуйте глибину чорного з технологією OLED та інтелектуальним процесором обробки зображення AI Quantum 2026.</p>
+            <div class="hero-actions">
+                <a href="catalog.html" class="btn-primary">Придбати зараз <i class="fas fa-arrow-right"></i></a>
+                <button class="btn-fancy-video" id="watchVideoBtn">
+                    <i class="fas fa-play-circle"></i> Дивитись презентацію
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="24">0</span>
+                    <span class="stat-label">/7 Підтримка</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-label">Років гарантії</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="10000">0</span>
+                    <span class="stat-label">+ Клієнтів</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="tv-mockup">
+                <img src="pic/1.webp" alt="Flagship TV" class="main-tv-img floating">
+                <div class="tv-glow"></div>
+                <div class="tech-badge">
+                    <span>8K AI</span>
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="price-badge">
+                    <span>Від 12 499 ₴</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="url(#gradient)"></path>
+            <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+</section>
+
+<section class="categories-v3 reveal">
+    <div class="container">
+        <div class="section-intro">
+            <span class="subtitle">КАТЕГОРІЇ</span>
+            <h2 class="title">Оберіть свій формат <span class="gradient-text">розваг</span></h2>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-item big category-card">
+                <div class="cat-image-wrapper"><img src="pic/q1.webp" alt="Cinema"></div>
+                <div class="cat-body">
+                    <h3>Домашній кінотеатр</h3>
+                    <p>Максимальна діагональ для повного занурення.</p>
+                    <a href="catalog.html" class="cat-link">Детальніше <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="bento-item category-card">
+                <div class="cat-image-wrapper"><img src="pic/q2.webp" alt="Gaming"></div>
+                <div class="cat-body">
+                    <h3>Gaming Pro</h3>
+                    <p>144Hz, HDMI 2.1, VRR, ALLM — все для переможної гри.</p>
+                    <a href="catalog.html" class="cat-link">Детальніше <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="bento-item category-card">
+                <div class="cat-image-wrapper"><img src="pic/q3.webp" alt="Design"></div>
+                <div class="cat-body">
+                    <h3>Дизайнерські ТВ</h3>
+                    <p>Мистецтво у вашому інтер'єрі. The Frame, OLED evo Gallery Edition.</p>
+                    <a href="catalog.html" class="cat-link">Детальніше <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="products-v3 reveal">
+    <div class="container">
+        <div class="products-header">
+            <div>
+                <span class="subtitle">БЕСТСЕЛЕРИ</span>
+                <h2 class="title">Топові моделі <span class="gradient-text">сезону</span></h2>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-btn" id="prod-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn" id="prod-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <div class="products-slider-viewport">
+            <div class="destinations-cards" id="products-row">
+                <div class="destination-card" data-brand="Samsung" data-price="85999">
+                    <div class="tv-card-img">
+                        <img src="pic/w1.webp" alt="Samsung Neo QLED">
+                        <div class="card-rating">4.9 ★</div>
+                        <div class="badge-hot">Хіт продажів</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Samsung Neo QLED 8K</h3>
+                        <p>65", 144Hz, Neural Quantum Processor</p>
+                        <div class="price-wrapper">
+                            <span class="price-tag">85,999 грн</span>
+                            <span class="old-price">109,999 грн</span>
+                        </div>
+                        <button class="btn-primary add-to-cart">В кошик</button>
+                    </div>
+                </div>
+                <div class="destination-card" data-brand="LG" data-price="64500">
+                    <div class="tv-card-img">
+                        <img src="pic/w3 (111).webp" alt="LG OLED C3">
+                        <div class="card-rating">4.8 ★</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>LG OLED C3 55"</h3>
+                        <p>4K Smart TV, α9 Gen6 AI Processor</p>
+                        <div class="price-wrapper">
+                            <span class="price-tag">64,500 грн</span>
+                        </div>
+                        <button class="btn-primary add-to-cart">В кошик</button>
+                    </div>
+                </div>
+                <div class="destination-card" data-brand="Sony" data-price="112000">
+                    <div class="tv-card-img">
+                        <img src="pic/w3.webp" alt="Sony Bravia">
+                        <div class="card-rating">5.0 ★</div>
+                        <div class="badge-premium">Premium</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Sony Bravia XR A95L</h3>
+                        <p>65", QD-OLED, Cognitive Processor XR</p>
+                        <div class="price-wrapper">
+                            <span class="price-tag">112,000 грн</span>
+                        </div>
+                        <button class="btn-primary add-to-cart">В кошик</button>
+                    </div>
+                </div>
+                <div class="destination-card" data-brand="Xiaomi" data-price="14999">
+                    <div class="tv-card-img">
+                        <img src="pic/w4.webp" alt="Xiaomi Mi TV">
+                        <div class="card-rating">4.5 ★</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Xiaomi Mi TV P1</h3>
+                        <p>55", 4K UHD, Android TV 11</p>
+                        <div class="price-wrapper">
+                            <span class="price-tag">14,999 грн</span>
+                            <span class="old-price">22,999 грн</span>
+                        </div>
+                        <button class="btn-primary add-to-cart">В кошик</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="main-footer">
+    <div class="container footer-grid">
+        <div class="f-col-brand">
+            <div class="logo"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span>ULTRA<b>TV</b></span></div>
+            <p>Ваш провідник у світ надвисокої чіткості.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="f-col-links">
+            <h4>Каталог</h4>
+            <ul><li><a href="catalog.html">OLED ТВ</a></li><li><a href="catalog.html">QLED серія</a></li></ul>
+        </div>
+        <div class="f-col-links">
+            <h4>Компанія</h4>
+            <ul><li><a href="#">Про нас</a></li><li><a href="contacts.html">Контакти</a></li></ul>
+        </div>
+        <div class="f-col-links">
+            <h4>Допомога</h4>
+            <ul><li><a href="#">Доставка та оплата</a></li><li><a href="#">Гарантія</a></li></ul>
+        </div>
+    </div>
+    <div class="container footer-bottom">
+        <p>&copy; 2026 ULTRA TV. Всі права захищено. Дипломний проект.</p>
+        <div class="payment-methods">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-apple-pay"></i>
+            <i class="fab fa-google-pay"></i>
+        </div>
+    </div>
+</footer>
+
+<a href="cart.html" class="floating-cart" id="floatingCartBtn">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-badge" id="cartCountBadge">0</span>
+</a>
+
+<button class="scroll-top-btn" id="scrollTopBtn">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Модальне вікно входу -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-close" onclick="closeModal('loginModal')">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="auth-card">
+            <div class="auth-header">
+                <a href="#" class="auth-logo">
+                    <div class="auth-logo-icon"><i class="fas fa-bolt"></i></div>
+                    <span class="auth-logo-text">ULTRA<b>TV</b></span>
+                </a>
+                <h2 class="auth-title">Ласкаво просимо!</h2>
+                <p class="auth-subtitle">Увійдіть у світ преміального телебачення</p>
+            </div>
+            <form id="loginFormModal">
+                <div class="input-field">
+                    <label>Електронна пошта</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="input-field">
+                    <label>Пароль</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="auth-btn">Увійти</button>
+            </form>
+            <div class="auth-divider">
+                <span>Або продовжити з</span>
+            </div>
+            <div class="social-buttons">
+                <button class="social-btn" onclick="alert('Google авторизація в розробці')">
+                    <i class="fab fa-google"></i> Google
+                </button>
+                <button class="social-btn" onclick="alert('Facebook авторизація в розробці')">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </button>
+            </div>
+            <div class="auth-switch">
+                Немає акаунту? <a onclick="switchToRegister()">Створити акаунт</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-close" onclick="closeModal('registerModal')">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="auth-card">
+            <div class="auth-header">
+                <a href="#" class="auth-logo">
+                    <div class="auth-logo-icon"><i class="fas fa-bolt"></i></div>
+                    <span class="auth-logo-text">ULTRA<b>TV</b></span>
+                </a>
+                <h2 class="auth-title">Створити акаунт</h2>
+                <p class="auth-subtitle">Приєднуйтесь до ULTRA TV</p>
+            </div>
+            <form id="registerFormModal">
+                <div class="input-field">
+                    <label>Ім'я користувача</label>
+                    <input type="text" id="regUsername" placeholder="Ім'я користувача" required>
+                </div>
+                <div class="input-field">
+                    <label>Електронна пошта</label>
+                    <input type="email" id="regEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="input-field">
+                    <label>Пароль</label>
+                    <input type="password" id="regPassword" placeholder="••••••••" required>
+                </div>
+                <div class="input-field">
+                    <label>Підтвердьте пароль</label>
+                    <input type="password" id="regPasswordConfirm" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="auth-btn">Зареєструватися</button>
+            </form>
+            <div class="auth-divider">
+                <span>Або продовжити з</span>
+            </div>
+            <div class="social-buttons">
+                <button class="social-btn" onclick="alert('Google авторизація в розробці')">
+                    <i class="fab fa-google"></i> Google
+                </button>
+                <button class="social-btn" onclick="alert('Facebook авторизація в розробці')">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </button>
+            </div>
+            <div class="auth-switch">
+                Вже є акаунт? <a onclick="switchToLogin()">Увійти</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="videoModal" class="modal">
+    <div class="modal-content video-modal">
+        <div class="modal-close" onclick="closeModal('videoModal')">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="video-container">
+            <iframe id="presentationVideo" width="100%" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<div id="toastNotification" class="toast-notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage"></span>
+</div>
+
+<!-- ============================================================ -->
+<!-- ==========  ⚠️ ТУТ ПОТРІБНО ВСТАВИТИ ВАШІ ДАНІ ⚠️  ========== -->
+<!-- ============================================================ -->
+<!-- 1. ЗАРЕЄСТРУЙТЕСЬ НА https://console.firebase.google.com/    -->
+<!-- 2. СТВОРІТЬ НОВИЙ ПРОЄКТ                                      -->
+<!-- 3. ДОДАЙТЕ ВЕБ-ЗАСТОСУНОК (НА ТИСНІТЬ КНОПКУ </>)            -->
+<!-- 4. СКОПІЮЙТЕ КОНФІГУРАЦІЮ З FIREBASE CONSOLE                  -->
+<!-- 5. ВСТАВТЕ ЗАМІСТЬ "ВАШ_API_KEY", "ВАШ_AUTH_DOMAIN" І Т.Д.    -->
+<!-- ============================================================ -->
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  import { 
+    getFirestore, 
+    collection, 
+    addDoc, 
+    getDocs, 
+    doc, 
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    query,
+    where
+  } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+ 
+  const firebaseConfig = {
+    apiKey: "AIzaSyCWl4L8z4MVh4NmvfHSrkt_x8_r5eACH2E",
+  authDomain: "ultratv-project.firebaseapp.com",
+  projectId: "ultratv-project",
+  storageBucket: "ultratv-project.firebasestorage.app",
+  messagingSenderId: "849582479231",
+  appId: "1:849582479231:web:a2004097e44fdf0286ec4a",
+  measurementId: "G-YNK4S9QSJP"
+  };
+  
+
+  // Ініціалізація Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Зберігаємо db в глобальну змінну
+  window.db = db;
+  window.collection = collection;
+  window.addDoc = addDoc;
+  window.getDocs = getDocs;
+  window.doc = doc;
+  window.deleteDoc = deleteDoc;
+  window.getDoc = getDoc;
+  window.updateDoc = updateDoc;
+  window.query = query;
+  window.where = where;
+
+  console.log("✅ Firebase успішно підключено!");
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

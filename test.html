@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Перевірка товарів</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .product-card { border: 1px solid #ddd; margin: 10px; padding: 15px; border-radius: 8px; }
+        .in-stock { color: green; font-weight: bold; }
+        .out-stock { color: red; font-weight: bold; }
+        .price { color: blue; font-size: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Каталог товарів (22 позиції)</h1>
+    <div id="products"></div>
+
+    <script>
+        fetch('data/products.json')
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('products');
+                const products = data.products;
+                
+                products.forEach(product => {
+                    container.innerHTML += `
+                        <div class="product-card">
+                            <h3>${product.name}</h3>
+                            <p><strong>Категорія:</strong> ${product.category}</p>
+                            <p><strong>Ціна:</strong> <span class="price">${product.price} грн</span></p>
+                            <p><strong>Статус:</strong> <span class="${product.inStock ? 'in-stock' : 'out-stock'}">
+                                ${product.inStock ? '✅ В наявності' : '❌ Немає в наявності'}
+                            </span></p>
+                            <p>${product.description}</p>
+                            <hr>
+                        </div>
+                    `;
+                });
+                
+                // Статистика
+                const inStockCount = products.filter(p => p.inStock).length;
+                console.log(`Всього товарів: ${products.length}`);
+                console.log(`В наявності: ${inStockCount}`);
+                console.log(`Немає: ${products.length - inStockCount}`);
+            })
+            .catch(error => console.error('Помилка:', error));
+    </script>
+</body>
+</html>
