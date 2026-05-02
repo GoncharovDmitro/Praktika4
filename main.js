@@ -119,36 +119,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // =========================================
-    // CUSTOM CURSOR
+    // CUSTOM CURSOR — Disabled for cleaner UX
     // =========================================
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-
-    if (cursorDot && cursorOutline && window.innerWidth > 768) {
-        let mouseX = 0, mouseY = 0;
-        let outlineX = 0, outlineY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
-        });
-
-        function animateCursor() {
-            outlineX += (mouseX - outlineX) * 0.15;
-            outlineY += (mouseY - outlineY) * 0.15;
-            cursorOutline.style.left = outlineX + 'px';
-            cursorOutline.style.top = outlineY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        document.querySelectorAll('a, button, .cta-button, .filter-btn, .level-tag').forEach(el => {
-            el.addEventListener('mouseenter', () => cursorOutline.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hover'));
-        });
-    }
 
     // =========================================
     // HEADER SCROLL EFFECT
@@ -504,26 +476,32 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!container || !DB || !DB.blogPosts) return;
 
         container.innerHTML = DB.blogPosts.map(post => `
-            <article class="blog-card">
+            <article class="blog-card" data-post-id="${post.id}">
                 <img src="${post.image}" alt="${post.title}" class="blog-image">
                 <div class="blog-content">
-                    <span class="blog-meta">${formatDate(post.date)} • ${post.readTime}</span>
+                    <span class="blog-meta">${formatDate(post.date)} • ${post.readTime} • ${post.category}</span>
                     <h3 class="blog-title">${post.title}</h3>
                     <p class="blog-excerpt">${post.excerpt}</p>
+                    <div class="blog-full-content">${post.fullContent || post.content}</div>
                     <div class="blog-footer">
                         <div class="blog-likes" data-post-id="${post.id}">
                             <i class="fas fa-heart"></i> <span>${post.likes}</span>
                         </div>
                         <span class="blog-read-time"><i class="fas fa-clock"></i> ${post.readTime}</span>
                     </div>
-                    <a href="#" class="read-more">читати далі →</a>
+                    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                        <a href="#" class="read-more blog-expand-btn">читати далі →</a>
+                        <button class="share-btn" onclick="shareBlogPost('${post.title}')"><i class="fas fa-share-alt"></i> Поділитися</button>
+                    </div>
+                    <div class="reading-progress"><div class="reading-progress-fill"></div></div>
                 </div>
             </article>
         `).join('');
 
         // Like functionality
         container.querySelectorAll('.blog-likes').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const id = btn.dataset.postId;
                 const liked = JSON.parse(localStorage.getItem('likedPosts') || '[]');
                 const span = btn.querySelector('span');
@@ -540,31 +518,103 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.setItem('likedPosts', JSON.stringify(liked));
             });
         });
+
+        // Read More expand functionality
+        container.querySelectorAll('.blog-expand-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const card = btn.closest('.blog-card');
+                const isExpanded = card.classList.toggle('expanded');
+                btn.textContent = isExpanded ? '← згорнути' : 'читати далі →';
+                // Track reading achievement
+                const readPosts = JSON.parse(localStorage.getItem('readBlogPosts') || '[]');
+                const postId = card.dataset.postId;
+                if (!readPosts.includes(postId) && isExpanded) {
+                    readPosts.push(postId);
+                    localStorage.setItem('readBlogPosts', JSON.stringify(readPosts));
+                    if (readPosts.length >= 3) trackAchievement('bookworm');
+                }
+            });
+        });
     }
+
+    // Share blog post
+    window.shareBlogPost = function(title) {
+        if (navigator.share) {
+            navigator.share({ title: title, url: window.location.href });
+        } else {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast('Посилання скопійовано!');
+            });
+        }
+    };
 
     function renderEquipment() {
         const container = document.getElementById('equipmentGrid');
         if (!container || !DB || !DB.equipment) return;
 
-        container.innerHTML = DB.equipment.map(item => `
-            <div class="equipment-item">
+        container.innerHTML = DB.equipment.map(item => {
+            const d = item.detailedInfo || {};
+            return `
+            <div class="equipment-item" data-id="${item.id}">
                 <img src="${item.image}" alt="${item.name}" class="equipment-image">
                 <h3>${item.name}</h3>
+                <span style="color:var(--accent-primary);font-size:12px;font-weight:600">${item.category}</span>
                 <p>${item.description}</p>
                 <div class="equipment-meta">
                     <span class="equipment-price">${item.priceRange}</span>
                     <span class="equipment-importance ${item.importance}">${getImportanceLabel(item.importance)}</span>
                 </div>
-            </div>
-        `).join('');
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+                    ${item.brands.map(b => `<span style="background:rgba(255,180,71,0.1);color:var(--accent-primary);padding:2px 10px;border-radius:12px;font-size:11px;border:1px solid rgba(255,180,71,0.2)">${b}</span>`).join('')}
+                </div>
+                <button class="equipment-toggle-btn"><i class="fas fa-chevron-down"></i> Детальніше</button>
+                <div class="equipment-details">
+                    <div class="equipment-details-grid">
+                        ${d.features ? `<div class="detail-block">
+                            <h5><i class="fas fa-list-check"></i> Характеристики</h5>
+                            <ul>${d.features.map(f => `<li>${f}</li>`).join('')}</ul>
+                        </div>` : ''}
+                        ${d.howToChoose ? `<div class="detail-block">
+                            <h5><i class="fas fa-hand-pointer"></i> Як обрати</h5>
+                            <p>${d.howToChoose}</p>
+                        </div>` : ''}
+                        ${d.care ? `<div class="detail-block">
+                            <h5><i class="fas fa-broom"></i> Догляд</h5>
+                            <p>${d.care}</p>
+                        </div>` : ''}
+                        ${d.lifespan ? `<div class="detail-block">
+                            <h5><i class="fas fa-hourglass-half"></i> Термін служби</h5>
+                            <p>${d.lifespan}</p>
+                        </div>` : ''}
+                    </div>
+                </div>
+            </div>`;
+        }).join('');
+
+        // Toggle equipment details
+        container.querySelectorAll('.equipment-toggle-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const item = btn.closest('.equipment-item');
+                item.classList.toggle('expanded');
+                const isExpanded = item.classList.contains('expanded');
+                btn.innerHTML = isExpanded
+                    ? '<i class="fas fa-chevron-up"></i> Згорнути'
+                    : '<i class="fas fa-chevron-down"></i> Детальніше';
+            });
+        });
     }
 
     function renderRoutes() {
         const container = document.getElementById('routesGrid');
         if (!container || !DB || !DB.routes) return;
 
-        container.innerHTML = DB.routes.map(route => `
-            <div class="route-card" data-difficulty="${route.difficulty}">
+        container.innerHTML = DB.routes.map(route => {
+            const d = route.detailedInfo || {};
+            return `
+            <div class="route-card" data-difficulty="${route.difficulty}" data-route-id="${route.id}">
                 <div class="route-image">
                     <img src="${route.image}" alt="${route.name}">
                     <span class="route-difficulty ${route.difficulty}">${getDifficultyLabel(route.difficulty)}</span>
@@ -575,17 +625,77 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span><i class="fas fa-map-marker-alt"></i> ${route.location}</span>
                         <span><i class="fas fa-clock"></i> ${route.duration}</span>
                         <span><i class="fas fa-road"></i> ${route.distance}</span>
+                        <span><i class="fas fa-mountain"></i> ${route.elevation}</span>
                     </div>
                     <p>${route.description}</p>
+                    <div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0">
+                        ${route.highlights.map(h => `<span style="background:rgba(255,180,71,0.1);color:var(--accent-primary);padding:3px 10px;border-radius:12px;font-size:11px;border:1px solid rgba(255,180,71,0.2)">${h}</span>`).join('')}
+                    </div>
                     <div class="card-rating" style="margin-bottom:12px">
                         <i class="fas fa-star"></i>
                         <span>${route.rating}</span>
                         <span style="color:var(--text-gray);font-size:12px">(${route.reviews} відгуків)</span>
                     </div>
-                    <a href="#" class="read-more route-details" data-route="${route.id}">Детальніше →</a>
+                    <a href="#" class="read-more route-details route-expand-btn" data-route="${route.id}">Детальніше →</a>
+
+                    <div class="route-expanded-details">
+                        ${d.fullDescription ? `<div class="route-detail-section">
+                            <h4><i class="fas fa-info-circle"></i> Повний опис</h4>
+                            <p>${d.fullDescription}</p>
+                        </div>` : ''}
+
+                        <div class="route-info-grid">
+                            ${d.startPoint ? `<div class="route-info-item">
+                                <i class="fas fa-flag"></i>
+                                <span>Старт</span>
+                                <strong>${d.startPoint}</strong>
+                            </div>` : ''}
+                            <div class="route-info-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Сезон</span>
+                                <strong>${route.bestSeason}</strong>
+                            </div>
+                            ${d.terrain ? `<div class="route-info-item">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Рельєф</span>
+                                <strong>${d.terrain}</strong>
+                            </div>` : ''}
+                            ${d.coordinates ? `<div class="route-info-item">
+                                <i class="fas fa-map-pin"></i>
+                                <span>Координати</span>
+                                <strong style="font-size:11px">${d.coordinates}</strong>
+                            </div>` : ''}
+                        </div>
+
+                        ${d.whatToBring ? `<div class="route-detail-section">
+                            <h4><i class="fas fa-backpack"></i> Що взяти з собою</h4>
+                            <ul>${d.whatToBring.map(i => `<li>${i}</li>`).join('')}</ul>
+                        </div>` : ''}
+
+                        ${d.wildlife ? `<div class="route-detail-section">
+                            <h4><i class="fas fa-paw"></i> Флора і фауна</h4>
+                            <ul>${d.wildlife.map(w => `<li>${w}</li>`).join('')}</ul>
+                        </div>` : ''}
+
+                        ${d.tips ? `<div class="route-detail-section">
+                            <h4><i class="fas fa-lightbulb"></i> Поради</h4>
+                            <p>${d.tips}</p>
+                        </div>` : ''}
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            </div>`;
+        }).join('');
+
+        // Route expand functionality
+        container.querySelectorAll('.route-expand-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const card = btn.closest('.route-card');
+                const isExpanded = card.classList.toggle('expanded');
+                btn.textContent = isExpanded ? '← Згорнути' : 'Детальніше →';
+            });
+        });
 
         // Route filter
         initRouteFilter();
@@ -1124,10 +1234,105 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // =========================================
+    // SCROLL PROGRESS BAR
+    // =========================================
+    const scrollProgress = document.createElement('div');
+    scrollProgress.className = 'scroll-progress';
+    document.body.appendChild(scrollProgress);
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollProgress.style.width = scrollPercent + '%';
+    });
+
+    // =========================================
+    // KEYBOARD SHORTCUTS HELP (Press ?)
+    // =========================================
+    const keyboardHelp = document.createElement('div');
+    keyboardHelp.className = 'keyboard-help';
+    keyboardHelp.innerHTML = `
+        <h4><i class="fas fa-keyboard"></i> Гарячі клавіші</h4>
+        <div class="shortcut-row"><kbd>/</kbd><span>Пошук</span></div>
+        <div class="shortcut-row"><kbd>?</kbd><span>Ця довідка</span></div>
+        <div class="shortcut-row"><kbd>T</kbd><span>Змінити тему</span></div>
+        <div class="shortcut-row"><kbd>Home</kbd><span>На початок</span></div>
+        <div class="shortcut-row"><kbd>Esc</kbd><span>Закрити</span></div>
+    `;
+    document.body.appendChild(keyboardHelp);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === '?') {
+            keyboardHelp.classList.toggle('visible');
+        }
+        if (e.key === 't' || e.key === 'T') {
+            if (themeToggle) themeToggle.click();
+        }
+        if (e.key === 'Home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+
+    // =========================================
+    // SMOOTH PAGE TRANSITIONS (internal links)
+    // =========================================
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                e.preventDefault();
+                document.body.style.opacity = '0';
+                document.body.style.transition = 'opacity 0.25s ease';
+                setTimeout(() => { window.location.href = href; }, 250);
+            }
+        });
+    });
+
+    // Fade in on page load
+    document.body.style.opacity = '0';
+    requestAnimationFrame(() => {
+        document.body.style.transition = 'opacity 0.4s ease';
+        document.body.style.opacity = '1';
+    });
+
+    // =========================================
+    // LAZY IMAGE LOADING WITH ANIMATION
+    // =========================================
+    if ('IntersectionObserver' in window) {
+        const imgObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'scale(1)';
+                    imgObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('img').forEach(img => {
+            img.style.opacity = '0';
+            img.style.transform = 'scale(0.95)';
+            img.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            if (img.complete) {
+                img.style.opacity = '1';
+                img.style.transform = 'scale(1)';
+            } else {
+                imgObserver.observe(img);
+                img.addEventListener('load', () => {
+                    img.style.opacity = '1';
+                    img.style.transform = 'scale(1)';
+                });
+            }
+        });
+    }
+
+    // =========================================
     // LOAD DATABASE & INITIALIZE
     // =========================================
     loadDatabase();
 
-    console.log('%c⛰️ MNTN Enhanced v2.0', 'font-size:20px;color:#ffb347;font-weight:bold;');
-    console.log('%cPress "/" for search, try Konami Code for a surprise!', 'color:#667eea;');
+    console.log('%c⛰️ MNTN Enhanced v3.0', 'font-size:20px;color:#ffb347;font-weight:bold;');
+    console.log('%cPress "/" for search, "?" for shortcuts, Konami Code for a surprise!', 'color:#667eea;');
 });
