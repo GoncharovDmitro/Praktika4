@@ -225,14 +225,40 @@
                 </div>
                 
                 <div class="text-content">
-                    <p>Визначення вашого рівня туриста може бути важливим інструментом при плануванні майбутніх походів. Цей посібник з рівнів хайкінгу допоможе вам планувати походи відповідно до різних рейтингів.</p>
-                    <div class="level-tags">
-                        <span class="level-tag" data-tilt>🏕️ Новачок</span>
-                        <span class="level-tag" data-tilt>🥾 Середній</span>
-                        <span class="level-tag" data-tilt>⛰️ Досвідчений</span>
-                        <span class="level-tag" data-tilt>🧗 Експерт</span>
+                    <p>Визначення вашого рівня туриста може бути важливим інструментом при плануванні майбутніх походів. Оберіть свій рівень нижче:</p>
+                    <div class="level-tags" id="levelTabs">
+                        <span class="level-tag active" data-level="beginner" data-tilt>🏕️ Новачок</span>
+                        <span class="level-tag" data-level="intermediate" data-tilt>🥾 Середній</span>
+                        <span class="level-tag" data-level="advanced" data-tilt>⛰️ Досвідчений</span>
+                        <span class="level-tag" data-level="expert" data-tilt>🧗 Експерт</span>
                     </div>
-                    <a href="blog.html" class="read-more">читати далі →</a>
+                    <div class="level-content" id="levelContent">
+                        <div class="level-panel active" data-panel="beginner">
+                            <div class="level-difficulty-bar"><div class="level-fill" style="width:25%"></div></div>
+                            <h4>Рівень: Новачок</h4>
+                            <p>Ідеально для першого походу! Маршрути до 10 км по рівній місцевості з мінімальним перепадом висот. Тривалість: 2-4 години. Рекомендовані маршрути: Озеро Синевир, Водоспад Шипіт.</p>
+                            <div class="level-stats"><span><i class="fas fa-road"></i> до 10 км</span><span><i class="fas fa-mountain"></i> до 300 м</span><span><i class="fas fa-clock"></i> 2-4 год</span></div>
+                        </div>
+                        <div class="level-panel" data-panel="intermediate">
+                            <div class="level-difficulty-bar"><div class="level-fill" style="width:50%;background:linear-gradient(90deg,#FFB347,#FF9800)"></div></div>
+                            <h4>Рівень: Середній</h4>
+                            <p>Для тих, хто вже має досвід. Маршрути 10-20 км з помірним набором висоти. Потрібне базове спорядження. Рекомендовані маршрути: Полонина Рівна, Петрос.</p>
+                            <div class="level-stats"><span><i class="fas fa-road"></i> 10-20 км</span><span><i class="fas fa-mountain"></i> 300-800 м</span><span><i class="fas fa-clock"></i> 4-7 год</span></div>
+                        </div>
+                        <div class="level-panel" data-panel="advanced">
+                            <div class="level-difficulty-bar"><div class="level-fill" style="width:75%;background:linear-gradient(90deg,#FF9800,#f44336)"></div></div>
+                            <h4>Рівень: Досвідчений</h4>
+                            <p>Складні маршрути з крутими підйомами та технічними ділянками. Потрібне повне спорядження та фізична підготовка. Рекомендовані: Говерла, Чорногірський хребет.</p>
+                            <div class="level-stats"><span><i class="fas fa-road"></i> 15-30 км</span><span><i class="fas fa-mountain"></i> 800-1500 м</span><span><i class="fas fa-clock"></i> 6-10 год</span></div>
+                        </div>
+                        <div class="level-panel" data-panel="expert">
+                            <div class="level-difficulty-bar"><div class="level-fill" style="width:100%;background:linear-gradient(90deg,#f44336,#b71c1c)"></div></div>
+                            <h4>Рівень: Експерт</h4>
+                            <p>Екстремальні маршрути та багатоденні експедиції. Вимагають досвід альпінізму, навички навігації та виживання. Зимові сходження, скельні ділянки.</p>
+                            <div class="level-stats"><span><i class="fas fa-road"></i> 30+ км</span><span><i class="fas fa-mountain"></i> 1500+ м</span><span><i class="fas fa-clock"></i> 2-5 днів</span></div>
+                        </div>
+                    </div>
+                    <a href="routes.html" class="read-more">переглянути маршрути →</a>
                 </div>
             </div>
             
@@ -534,6 +560,12 @@
             <div class="profile-stat"><span id="profileComments">0</span><label>Коментарів</label></div>
         </div>
         <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Вийти</button>
+    </div>
+
+    <!-- Content Modal -->
+    <div class="modal modal-xl" id="contentModal">
+        <button class="modal-close">&times;</button>
+        <div id="contentModalBody"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

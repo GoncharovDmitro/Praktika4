@@ -482,7 +482,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="blog-meta">${formatDate(post.date)} • ${post.readTime} • ${post.category}</span>
                     <h3 class="blog-title">${post.title}</h3>
                     <p class="blog-excerpt">${post.excerpt}</p>
-                    <div class="blog-full-content">${post.fullContent || post.content}</div>
                     <div class="blog-footer">
                         <div class="blog-likes" data-post-id="${post.id}">
                             <i class="fas fa-heart"></i> <span>${post.likes}</span>
@@ -490,10 +489,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="blog-read-time"><i class="fas fa-clock"></i> ${post.readTime}</span>
                     </div>
                     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-                        <a href="#" class="read-more blog-expand-btn">читати далі →</a>
+                        <a href="#" class="read-more blog-modal-btn" data-post-id="${post.id}">читати далі →</a>
                         <button class="share-btn" onclick="shareBlogPost('${post.title}')"><i class="fas fa-share-alt"></i> Поділитися</button>
                     </div>
-                    <div class="reading-progress"><div class="reading-progress-fill"></div></div>
                 </div>
             </article>
         `).join('');
@@ -519,19 +517,39 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Read More expand functionality
-        container.querySelectorAll('.blog-expand-btn').forEach(btn => {
+        // Blog modal functionality
+        container.querySelectorAll('.blog-modal-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                const card = btn.closest('.blog-card');
-                const isExpanded = card.classList.toggle('expanded');
-                btn.textContent = isExpanded ? '← згорнути' : 'читати далі →';
+                const id = btn.dataset.postId;
+                const post = DB.blogPosts.find(p => p.id == id);
+                if (!post) return;
+                const content = post.fullContent || post.content || post.excerpt;
+                openContentModal(`
+                    <div class="content-modal-header">
+                        <img src="${post.image}" alt="${post.title}">
+                        <div class="modal-header-overlay">
+                            <h2>${post.title}</h2>
+                            <div class="modal-meta">
+                                <span><i class="fas fa-calendar"></i> ${formatDate(post.date)}</span>
+                                <span><i class="fas fa-clock"></i> ${post.readTime}</span>
+                                <span><i class="fas fa-folder"></i> ${post.category}</span>
+                                <span><i class="fas fa-heart"></i> ${post.likes} вподобань</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-modal-body">
+                        <div style="font-size:14px;line-height:1.9;color:var(--text-gray)">${content}</div>
+                        <div style="margin-top:20px;padding-top:15px;border-top:1px solid rgba(255,255,255,0.06)">
+                            <button class="share-btn" onclick="shareBlogPost('${post.title}')"><i class="fas fa-share-alt"></i> Поділитися статтею</button>
+                        </div>
+                    </div>
+                `);
                 // Track reading achievement
                 const readPosts = JSON.parse(localStorage.getItem('readBlogPosts') || '[]');
-                const postId = card.dataset.postId;
-                if (!readPosts.includes(postId) && isExpanded) {
-                    readPosts.push(postId);
+                if (!readPosts.includes(String(id))) {
+                    readPosts.push(String(id));
                     localStorage.setItem('readBlogPosts', JSON.stringify(readPosts));
                     if (readPosts.length >= 3) trackAchievement('bookworm');
                 }
@@ -550,13 +568,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    // =========================================
+    // CONTENT MODAL HELPER
+    // =========================================
+    function openContentModal(html) {
+        const modal = document.getElementById('contentModal');
+        const body = document.getElementById('contentModalBody');
+        if (!modal || !body) return;
+        body.innerHTML = html;
+        openModal('contentModal');
+        modal.scrollTop = 0;
+    }
+
     function renderEquipment() {
         const container = document.getElementById('equipmentGrid');
         if (!container || !DB || !DB.equipment) return;
 
-        container.innerHTML = DB.equipment.map(item => {
-            const d = item.detailedInfo || {};
-            return `
+        container.innerHTML = DB.equipment.map(item => `
             <div class="equipment-item" data-id="${item.id}">
                 <img src="${item.image}" alt="${item.name}" class="equipment-image">
                 <h3>${item.name}</h3>
@@ -569,40 +597,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
                     ${item.brands.map(b => `<span style="background:rgba(255,180,71,0.1);color:var(--accent-primary);padding:2px 10px;border-radius:12px;font-size:11px;border:1px solid rgba(255,180,71,0.2)">${b}</span>`).join('')}
                 </div>
-                <button class="equipment-toggle-btn"><i class="fas fa-chevron-down"></i> Детальніше</button>
-                <div class="equipment-details">
-                    <div class="equipment-details-grid">
-                        ${d.features ? `<div class="detail-block">
-                            <h5><i class="fas fa-list-check"></i> Характеристики</h5>
-                            <ul>${d.features.map(f => `<li>${f}</li>`).join('')}</ul>
-                        </div>` : ''}
-                        ${d.howToChoose ? `<div class="detail-block">
-                            <h5><i class="fas fa-hand-pointer"></i> Як обрати</h5>
-                            <p>${d.howToChoose}</p>
-                        </div>` : ''}
-                        ${d.care ? `<div class="detail-block">
-                            <h5><i class="fas fa-broom"></i> Догляд</h5>
-                            <p>${d.care}</p>
-                        </div>` : ''}
-                        ${d.lifespan ? `<div class="detail-block">
-                            <h5><i class="fas fa-hourglass-half"></i> Термін служби</h5>
-                            <p>${d.lifespan}</p>
-                        </div>` : ''}
-                    </div>
-                </div>
-            </div>`;
-        }).join('');
+                <button class="equipment-toggle-btn" data-equip-id="${item.id}"><i class="fas fa-info-circle"></i> Детальніше</button>
+            </div>
+        `).join('');
 
-        // Toggle equipment details
+        // Open equipment modal
         container.querySelectorAll('.equipment-toggle-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const item = btn.closest('.equipment-item');
-                item.classList.toggle('expanded');
-                const isExpanded = item.classList.contains('expanded');
-                btn.innerHTML = isExpanded
-                    ? '<i class="fas fa-chevron-up"></i> Згорнути'
-                    : '<i class="fas fa-chevron-down"></i> Детальніше';
+                const id = btn.dataset.equipId;
+                const item = DB.equipment.find(eq => eq.id == id);
+                if (!item) return;
+                const d = item.detailedInfo || {};
+                openContentModal(`
+                    <div class="content-modal-header">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="modal-header-overlay">
+                            <h2>${item.name}</h2>
+                            <div class="modal-meta">
+                                <span><i class="fas fa-tag"></i> ${item.category}</span>
+                                <span><i class="fas fa-hryvnia-sign"></i> ${item.priceRange}</span>
+                                <span class="equipment-importance ${item.importance}">${getImportanceLabel(item.importance)}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-modal-body">
+                        <p>${item.description}</p>
+                        <div class="modal-tags">${item.brands.map(b => `<span>${b}</span>`).join('')}</div>
+                        ${d.features ? `<h3><i class="fas fa-list-check"></i> Характеристики</h3><ul class="detail-list">${d.features.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
+                        ${d.howToChoose ? `<h3><i class="fas fa-hand-pointer"></i> Як обрати</h3><p>${d.howToChoose}</p>` : ''}
+                        ${d.care ? `<h3><i class="fas fa-broom"></i> Догляд</h3><p>${d.care}</p>` : ''}
+                        ${d.lifespan ? `<h3><i class="fas fa-hourglass-half"></i> Термін служби</h3><p>${d.lifespan}</p>` : ''}
+                    </div>
+                `);
             });
         });
     }
@@ -611,9 +638,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('routesGrid');
         if (!container || !DB || !DB.routes) return;
 
-        container.innerHTML = DB.routes.map(route => {
-            const d = route.detailedInfo || {};
-            return `
+        container.innerHTML = DB.routes.map(route => `
             <div class="route-card" data-difficulty="${route.difficulty}" data-route-id="${route.id}">
                 <div class="route-image">
                     <img src="${route.image}" alt="${route.name}">
@@ -636,69 +661,84 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span>${route.rating}</span>
                         <span style="color:var(--text-gray);font-size:12px">(${route.reviews} відгуків)</span>
                     </div>
-                    <a href="#" class="read-more route-details route-expand-btn" data-route="${route.id}">Детальніше →</a>
-
-                    <div class="route-expanded-details">
-                        ${d.fullDescription ? `<div class="route-detail-section">
-                            <h4><i class="fas fa-info-circle"></i> Повний опис</h4>
-                            <p>${d.fullDescription}</p>
-                        </div>` : ''}
-
-                        <div class="route-info-grid">
-                            ${d.startPoint ? `<div class="route-info-item">
-                                <i class="fas fa-flag"></i>
-                                <span>Старт</span>
-                                <strong>${d.startPoint}</strong>
-                            </div>` : ''}
-                            <div class="route-info-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>Сезон</span>
-                                <strong>${route.bestSeason}</strong>
-                            </div>
-                            ${d.terrain ? `<div class="route-info-item">
-                                <i class="fas fa-layer-group"></i>
-                                <span>Рельєф</span>
-                                <strong>${d.terrain}</strong>
-                            </div>` : ''}
-                            ${d.coordinates ? `<div class="route-info-item">
-                                <i class="fas fa-map-pin"></i>
-                                <span>Координати</span>
-                                <strong style="font-size:11px">${d.coordinates}</strong>
-                            </div>` : ''}
-                        </div>
-
-                        ${d.whatToBring ? `<div class="route-detail-section">
-                            <h4><i class="fas fa-backpack"></i> Що взяти з собою</h4>
-                            <ul>${d.whatToBring.map(i => `<li>${i}</li>`).join('')}</ul>
-                        </div>` : ''}
-
-                        ${d.wildlife ? `<div class="route-detail-section">
-                            <h4><i class="fas fa-paw"></i> Флора і фауна</h4>
-                            <ul>${d.wildlife.map(w => `<li>${w}</li>`).join('')}</ul>
-                        </div>` : ''}
-
-                        ${d.tips ? `<div class="route-detail-section">
-                            <h4><i class="fas fa-lightbulb"></i> Поради</h4>
-                            <p>${d.tips}</p>
-                        </div>` : ''}
-                    </div>
+                    <a href="#" class="read-more route-details route-modal-btn" data-route="${route.id}">Детальніше →</a>
                 </div>
-            </div>`;
-        }).join('');
+            </div>
+        `).join('');
 
-        // Route expand functionality
-        container.querySelectorAll('.route-expand-btn').forEach(btn => {
+        // Route modal functionality
+        container.querySelectorAll('.route-modal-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                const card = btn.closest('.route-card');
-                const isExpanded = card.classList.toggle('expanded');
-                btn.textContent = isExpanded ? '← Згорнути' : 'Детальніше →';
+                const id = btn.dataset.route;
+                const route = DB.routes.find(r => r.id == id);
+                if (!route) return;
+                const d = route.detailedInfo || {};
+                const svgPath = generateRandomPath();
+                openContentModal(`
+                    <div class="content-modal-header">
+                        <img src="${route.image}" alt="${route.name}">
+                        <div class="modal-header-overlay">
+                            <h2>${route.name}</h2>
+                            <div class="modal-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> ${route.location}</span>
+                                <span><i class="fas fa-clock"></i> ${route.duration}</span>
+                                <span class="route-difficulty ${route.difficulty}">${getDifficultyLabel(route.difficulty)}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-modal-body">
+                        ${d.fullDescription ? `<p>${d.fullDescription}</p>` : `<p>${route.description}</p>`}
+
+                        <div class="modal-info-grid">
+                            <div class="modal-info-card"><i class="fas fa-road"></i><span class="info-label">Дистанція</span><span class="info-value">${route.distance}</span></div>
+                            <div class="modal-info-card"><i class="fas fa-mountain"></i><span class="info-label">Набір висоти</span><span class="info-value">${route.elevation}</span></div>
+                            <div class="modal-info-card"><i class="fas fa-calendar-alt"></i><span class="info-label">Сезон</span><span class="info-value">${route.bestSeason}</span></div>
+                            ${d.startPoint ? `<div class="modal-info-card"><i class="fas fa-flag"></i><span class="info-label">Старт</span><span class="info-value">${d.startPoint}</span></div>` : ''}
+                            ${d.terrain ? `<div class="modal-info-card"><i class="fas fa-layer-group"></i><span class="info-label">Рельєф</span><span class="info-value">${d.terrain}</span></div>` : ''}
+                            <div class="modal-info-card"><i class="fas fa-star"></i><span class="info-label">Рейтинг</span><span class="info-value">${route.rating} ★</span></div>
+                        </div>
+
+                        <h3><i class="fas fa-map"></i> Карта маршруту</h3>
+                        <div class="route-map-container">
+                            <div class="route-map-path">
+                                <svg viewBox="0 0 400 200">${svgPath}</svg>
+                            </div>
+                            <div class="map-overlay-info">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${d.coordinates ? `<div class="map-coords">${d.coordinates}</div>` : `<div class="map-coords">${route.location}</div>`}
+                            </div>
+                        </div>
+
+                        ${d.whatToBring ? `<h3><i class="fas fa-backpack"></i> Що взяти з собою</h3><ul class="detail-list">${d.whatToBring.map(i => `<li>${i}</li>`).join('')}</ul>` : ''}
+                        ${d.wildlife ? `<h3><i class="fas fa-paw"></i> Флора і фауна</h3><div class="modal-tags">${d.wildlife.map(w => `<span>${w}</span>`).join('')}</div>` : ''}
+                        ${d.tips ? `<h3><i class="fas fa-lightbulb"></i> Поради</h3><p>${d.tips}</p>` : ''}
+
+                        <div class="modal-tags" style="margin-top:15px">${route.highlights.map(h => `<span>${h}</span>`).join('')}</div>
+                    </div>
+                `);
             });
         });
 
         // Route filter
         initRouteFilter();
+    }
+
+    function generateRandomPath() {
+        const points = [];
+        const segments = 6 + Math.floor(Math.random() * 4);
+        let x = 30 + Math.random() * 40;
+        let y = 160 + Math.random() * 20;
+        points.push(`M${x},${y}`);
+        for (let i = 0; i < segments; i++) {
+            x += 30 + Math.random() * 50;
+            y -= 10 + Math.random() * 25;
+            const cx = x - 15 + Math.random() * 30;
+            const cy = y + Math.random() * 20 - 10;
+            points.push(`Q${cx},${cy} ${x},${y}`);
+        }
+        return `<path d="${points.join(' ')}" />`;
     }
 
     function getDifficultyLabel(d) {
@@ -1232,6 +1272,27 @@ document.addEventListener('DOMContentLoaded', function() {
             konamiIndex = 0;
         }
     });
+
+    // =========================================
+    // LEVEL TABS — Difficulty Switching
+    // =========================================
+    const levelTabs = document.getElementById('levelTabs');
+    if (levelTabs) {
+        levelTabs.querySelectorAll('.level-tag').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const level = tab.dataset.level;
+                if (!level) return;
+                // Switch active tab
+                levelTabs.querySelectorAll('.level-tag').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                // Switch panel
+                const panels = document.querySelectorAll('#levelContent .level-panel');
+                panels.forEach(p => p.classList.remove('active'));
+                const target = document.querySelector(`#levelContent .level-panel[data-panel="${level}"]`);
+                if (target) target.classList.add('active');
+            });
+        });
+    }
 
     // =========================================
     // SCROLL PROGRESS BAR
