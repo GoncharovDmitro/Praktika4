@@ -588,16 +588,17 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="equipment-item" data-id="${item.id}">
                 <img src="${item.image}" alt="${item.name}" class="equipment-image">
                 <h3>${item.name}</h3>
-                <span style="color:var(--accent-primary);font-size:12px;font-weight:600">${item.category}</span>
                 <p>${item.description}</p>
                 <div class="equipment-meta">
                     <span class="equipment-price">${item.priceRange}</span>
                     <span class="equipment-importance ${item.importance}">${getImportanceLabel(item.importance)}</span>
                 </div>
-                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
-                    ${item.brands.map(b => `<span style="background:rgba(255,180,71,0.1);color:var(--accent-primary);padding:2px 10px;border-radius:12px;font-size:11px;border:1px solid rgba(255,180,71,0.2)">${b}</span>`).join('')}
+                <div class="equipment-brands">
+                    ${item.brands.map(b => `<span class="brand-tag">${b}</span>`).join('')}
                 </div>
-                <button class="equipment-toggle-btn" data-equip-id="${item.id}"><i class="fas fa-info-circle"></i> Детальніше</button>
+                <div class="equipment-btn-wrap">
+                    <button class="equipment-toggle-btn" data-equip-id="${item.id}"><i class="fas fa-info-circle"></i> Детальніше</button>
+                </div>
             </div>
         `).join('');
 

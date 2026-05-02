@@ -2464,7 +2464,7 @@ footer {
 .equipment-price {
     font-size: 14px;
     font-weight: 600;
-    color: var(--accent-primary);
+    color: var(--text-light);
 }
 
 .equipment-importance {
@@ -2887,26 +2887,52 @@ footer {
    EXPANDABLE / ACCORDION COMPONENTS
 ========================================= */
 
-/* Equipment Expandable Details */
-.equipment-item {
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* Equipment Card Styles */
 
 .equipment-item.expanded {
     grid-column: 1 / -1;
+}
+
+.equipment-brands {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px 20px 0;
+}
+
+.brand-tag {
+    background: rgba(255,255,255,0.06);
+    color: var(--text-gray);
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-size: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    line-height: 1.4;
+    text-align: center;
+}
+
+[data-theme="light"] .brand-tag {
+    background: rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.08);
+    color: var(--text-dark);
+}
+
+.equipment-btn-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 15px 20px 20px;
 }
 
 .equipment-toggle-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 12px;
-    padding: 8px 16px;
-    background: var(--gradient-1);
-    color: #1a1f2e;
-    border: none;
-    border-radius: 20px;
+    padding: 10px 24px;
+    background: rgba(255,255,255,0.06);
+    color: var(--text-light);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 25px;
     font-family: var(--font-body);
     font-size: 13px;
     font-weight: 600;
@@ -2914,7 +2940,16 @@ footer {
     transition: all 0.3s ease;
 }
 
+[data-theme="light"] .equipment-toggle-btn {
+    background: rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.1);
+    color: var(--text-dark);
+}
+
 .equipment-toggle-btn:hover {
+    background: var(--gradient-1);
+    color: #1a1f2e;
+    border-color: transparent;
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow);
 }
