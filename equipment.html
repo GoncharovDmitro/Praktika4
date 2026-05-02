@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спорядження - MNTN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="toast" id="toastMessage"></div>
+    <div class="achievement-popup" id="achievementPopup">
+        <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+        <div class="achievement-info">
+            <span class="achievement-label">Досягнення розблоковано!</span>
+            <span class="achievement-name" id="achievementName"></span>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo"><span class="logo-icon">⛰️</span> MNTN</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Головна</a></li>
+                        <li><a href="equipment.html">Спорядження</a></li>
+                        <li><a href="about.html">Про нас</a></li>
+                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="routes.html">Маршрути</a></li>
+                        <li><a href="contact.html">Контакти</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                    <button class="search-toggle" id="searchToggle"><i class="fas fa-search"></i></button>
+                    <a href="#" class="login-btn" id="accountBtn"><i class="fas fa-user-astronaut"></i><span>Акаунт</span></a>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <h2>Пошук по сайту</h2>
+            <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Шукати маршрути, статті..." autocomplete="off">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">MNTN</a>
+            <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+        </div>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="equipment.html">Спорядження</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="blog.html">Блог</a></li>
+            <li><a href="routes.html">Маршрути</a></li>
+            <li><a href="contact.html">Контакти</a></li>
+        </ul>
+    </div>
+
+    <main class="equipment-page">
+        <div class="container">
+            <div class="section-title">
+                <div class="number-bg">03</div>
+                <h2>НАШЕ СПОРЯДЖЕННЯ</h2>
+                <p>Основне спорядження<br>для хайкінгу</p>
+            </div>
+            
+            <div class="equipment-grid" id="equipmentGrid">
+                <!-- Equipment loaded from db.json -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo"><span class="logo-icon">⛰️</span> MNTN</a>
+                    <p>Вирушайте та відкрийте для себе наступний схил!</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Навігація</h4>
+                        <ul>
+                            <li><a href="about.html">Про MNTN</a></li>
+                            <li><a href="routes.html">Маршрути</a></li>
+                            <li><a href="contact.html">Контакти</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2024 MNTN, Inc. Усі права захищені.</p></div>
+        </div>
+    </footer>
+
+    <a href="#" id="toTopBtn" class="to-top-btn"><i class="fas fa-chevron-up"></i><svg class="progress-ring" width="50" height="50"><circle class="progress-ring-circle" cx="25" cy="25" r="22"/></svg></a>
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="registrationModal">
+        <button class="modal-close">&times;</button>
+        <div class="modal-icon"><i class="fas fa-mountain"></i></div>
+        <h2>Створити акаунт</h2><p>Приєднуйтесь до MNTN</p>
+        <form id="registrationForm">
+            <div class="form-group"><label><i class="fas fa-user"></i> Ім'я</label><input type="text" id="username" required></div>
+            <div class="form-group"><label><i class="fas fa-envelope"></i> Email</label><input type="email" id="email" required></div>
+            <div class="form-group"><label><i class="fas fa-lock"></i> Пароль</label><input type="password" id="password" required></div>
+            <div class="form-group"><label><i class="fas fa-lock"></i> Підтвердіть</label><input type="password" id="confirm_password" required></div>
+            <button type="submit" class="submit-btn"><span>Зареєструватися</span><i class="fas fa-arrow-right"></i></button>
+        </form>
+        <p class="modal-switch">Вже маєте акаунт? <a href="#" id="showLoginBtn">Увійти</a></p>
+    </div>
+    <div class="modal" id="loginModal">
+        <button class="modal-close">&times;</button>
+        <div class="modal-icon"><i class="fas fa-sign-in-alt"></i></div>
+        <h2>Увійти</h2><p>Ласкаво просимо!</p>
+        <form id="loginForm">
+            <div class="form-group"><label><i class="fas fa-envelope"></i> Email</label><input type="email" id="loginEmail" required></div>
+            <div class="form-group"><label><i class="fas fa-lock"></i> Пароль</label><input type="password" id="loginPassword" required></div>
+            <button type="submit" class="submit-btn"><span>Увійти</span><i class="fas fa-arrow-right"></i></button>
+        </form>
+        <p class="modal-switch">Немає акаунту? <a href="#" id="showRegisterBtn">Зареєструватися</a></p>
+    </div>
+    <div class="modal modal-lg" id="profileModal">
+        <button class="modal-close">&times;</button>
+        <div class="profile-header">
+            <div class="profile-avatar"><i class="fas fa-user-astronaut"></i></div>
+            <h2 id="profileName">Мандрівник</h2>
+            <div class="profile-xp"><div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div><span id="xpText">0 XP</span></div>
+        </div>
+        <div class="profile-achievements" id="profileAchievements"></div>
+        <div class="profile-stats">
+            <div class="profile-stat"><span id="profileVisits">0</span><label>Візитів</label></div>
+            <div class="profile-stat"><span id="profileBookmarks">0</span><label>Закладок</label></div>
+            <div class="profile-stat"><span id="profileComments">0</span><label>Коментарів</label></div>
+        </div>
+        <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Вийти</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

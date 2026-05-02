@@ -3,204 +3,541 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore - Комп'ютерні комплектуючі</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>MNTN | Блог про активний відпочинок та туризм</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Particle Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="loader-text">MNTN</div>
+            <div class="loader-progress">
+                <div class="loader-bar"></div>
+            </div>
+            <div class="loader-tip">Завантажуємо пригоди...</div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toastMessage"></div>
+
+    <!-- Achievement Popup -->
+    <div class="achievement-popup" id="achievementPopup">
+        <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+        <div class="achievement-info">
+            <span class="achievement-label">Досягнення розблоковано!</span>
+            <span class="achievement-name" id="achievementName"></span>
+        </div>
+    </div>
+
     <header class="header">
         <div class="container">
-            <div class="header-wrapper">
-                <div class="logo">
-                    <a href="index.html">
-                        <h1>Tech<span>Store</span></h1>
-                    </a>
-                </div>
-                <nav class="nav">
-                    <ul class="nav-menu">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⛰️</span>
+                    MNTN
+                </a>
+                <nav>
+                    <ul>
                         <li><a href="index.html" class="active">Головна</a></li>
-                        <li><a href="catalog.html">Каталог</a></li>
-                        <li><a href="#contact">Контакти</a></li>
+                        <li><a href="equipment.html">Спорядження</a></li>
+                        <li><a href="about.html">Про нас</a></li>
+                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="routes.html">Маршрути</a></li>
+                        <li><a href="contact.html">Контакти</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
-                    <div class="cart-icon">
-                        <a href="cart.html">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                            <span id="cart-count" class="cart-count">0</span>
-                        </a>
-                    </div>
-                    <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+                    <button class="theme-toggle" id="themeToggle" title="Змінити тему">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="search-toggle" id="searchToggle" title="Пошук">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="#" class="login-btn" id="accountBtn">
+                        <i class="fas fa-user-astronaut"></i>
+                        <span>Акаунт</span>
+                    </a>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Banner -->
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <h2>Пошук по сайту</h2>
+            <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Шукати маршрути, статті, спорядження..." autocomplete="off">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">MNTN</a>
+            <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+        </div>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="equipment.html">Спорядження</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="blog.html">Блог</a></li>
+            <li><a href="routes.html">Маршрути</a></li>
+            <li><a href="contact.html">Контакти</a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <div class="social-links-row">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-content">
+            <div class="social-links">
+                <span>Слідуйте</span>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <div class="social-line"></div>
+            </div>
+            <div class="hero-text">
+                <div class="hero-subtitle">
+                    <div class="line"></div>
+                    <div>ГІД З ХАЙКІНГУ</div>
+                </div>
+                <h1 class="glow-text">Будьте готові<br>до гір та за<br>їх межами!</h1>
+                <p class="hero-description" id="typedText"></p>
+                <div class="hero-buttons">
+                    <a href="#" class="cta-button primary" id="scrollDownBtn">
+                        <span>Почати подорож</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <a href="routes.html" class="cta-button secondary">
+                        <span>Переглянути маршрути</span>
+                        <i class="fas fa-map-marked-alt"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Прокрутка</span>
+                <div class="scroll-line"></div>
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-background">
+            <div class="background-layer bg-layer-3"></div>
+            <div class="background-layer bg-layer-2"></div>
+            <div class="background-layer bg-layer-1"></div>
+        </div>
+        
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Weather Widget -->
+    <div class="weather-widget" id="weatherWidget">
+        <div class="weather-icon"><i class="fas fa-cloud-sun"></i></div>
+        <div class="weather-info">
+            <span class="weather-temp">12°C</span>
+            <span class="weather-location">Карпати</span>
+        </div>
+        <div class="weather-details">
+            <span><i class="fas fa-wind"></i> 15 км/г</span>
+            <span><i class="fas fa-tint"></i> 65%</span>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-bar">
         <div class="container">
-            <div class="hero-content">
-                <h2>Найкращі комплектуючі для вашого ПК</h2>
-                <p>Високоякісні процесори, відеокарти, пам'ять та накопичувачі від провідних брендів</p>
-                <a href="catalog.html" class="btn btn-primary">Перейти до каталогу</a>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-route"></i></div>
+                    <div class="stat-number" data-count="150">0</div>
+                    <div class="stat-label">Активних маршрутів</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-number" data-count="2500">0</div>
+                    <div class="stat-label">Щасливих мандрівників</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Досвідчених гідів</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="stat-number" data-count="120">0</div>
+                    <div class="stat-label">Гірських вершин</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Tip -->
+    <div class="daily-tip">
+        <div class="container">
+            <div class="tip-content">
+                <div class="tip-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="tip-text">
+                    <span class="tip-label">Порада дня</span>
+                    <p id="dailyTip">Завантаження...</p>
+                </div>
+                <button class="tip-refresh" id="refreshTip"><i class="fas fa-sync-alt"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <section class="get-started">
+        <div class="container">
+            <div class="text-column">
+                <div class="section-title">
+                    <div class="number-bg">01</div>
+                    <h2>ПОЧНІТЬ</h2>
+                    <p>Який ваш рівень<br>хайкінгу?</p>
+                </div>
+                
+                <div class="text-content">
+                    <p>Визначення вашого рівня туриста може бути важливим інструментом при плануванні майбутніх походів. Цей посібник з рівнів хайкінгу допоможе вам планувати походи відповідно до різних рейтингів.</p>
+                    <div class="level-tags">
+                        <span class="level-tag" data-tilt>🏕️ Новачок</span>
+                        <span class="level-tag" data-tilt>🥾 Середній</span>
+                        <span class="level-tag" data-tilt>⛰️ Досвідчений</span>
+                        <span class="level-tag" data-tilt>🧗 Експерт</span>
+                    </div>
+                    <a href="blog.html" class="read-more">читати далі →</a>
+                </div>
+            </div>
+            
+            <div class="image-column">
+                <div class="image-content" data-tilt>
+                    <img src="images/01.webp" alt="Турист" class="hiker-image">
+                    <div class="image-overlay"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories">
+    <section class="get-started hiking-gear">
         <div class="container">
-            <div class="section-title">
-                <h2>Популярні категорії</h2>
-                <p>Оберіть необхідну категорію для вашого комп'ютера</p>
+            <div class="image-column">
+                <div class="image-content" data-tilt>
+                    <img src="images/02.webp" alt="Спорядження" class="hiker-image">
+                    <div class="image-overlay"></div>
+                </div>
             </div>
-            <div class="categories-grid" id="categories-grid">
-                <div class="category-card" data-category="CPU">
-                    <div class="category-icon">⚡</div>
-                    <h3>Процесори</h3>
-                    <p>Intel та AMD</p>
+            
+            <div class="text-column">
+                <div class="section-title">
+                    <div class="number-bg">02</div>
+                    <h2>СПОРЯДЖЕННЯ</h2>
+                    <p>Вибір правильного<br>спорядження!</p>
                 </div>
-                <div class="category-card" data-category="GPU">
-                    <div class="category-icon">🎮</div>
-                    <h3>Відеокарти</h3>
-                    <p>NVIDIA та Radeon</p>
-                </div>
-                <div class="category-card" data-category="RAM">
-                    <div class="category-icon">💾</div>
-                    <h3>Оперативна пам'ять</h3>
-                    <p>DDR4 та DDR5</p>
-                </div>
-                <div class="category-card" data-category="накопичувачі">
-                    <div class="category-icon">💿</div>
-                    <h3>Накопичувачі</h3>
-                    <p>SSD та HDD</p>
+                
+                <div class="text-content">
+                    <p>Приємна річ у хайкінгу для початківців - це те, що вам насправді не потрібне спеціальне спорядження, ви можете обійтися речами, які у вас вже є. Почнемо з одягу.</p>
+                    <div class="equipment-grid-preview">
+                        <div class="equip-item">
+                            <i class="fas fa-hiking"></i>
+                            <span>Трекінгові черевики</span>
+                        </div>
+                        <div class="equip-item">
+                            <i class="fas fa-backpack"></i>
+                            <span>Рюкзак 20-30л</span>
+                        </div>
+                        <div class="equip-item">
+                            <i class="fas fa-map"></i>
+                            <span>Карта та компас</span>
+                        </div>
+                    </div>
+                    <a href="equipment.html" class="read-more">читати далі →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="featured-products">
+    <section class="get-started map-timing">
         <div class="container">
-            <div class="section-title">
-                <h2>Рекомендовані товари</h2>
-                <p>Найпопулярніші товари цього місяця</p>
+            <div class="text-column">
+                <div class="section-title">
+                    <div class="number-bg">03</div>
+                    <h2>КУДИ ВИ ЙДЕТЕ - ЦЕ ГОЛОВНЕ</h2>
+                    <p>Розумійте свою<br>карту та час</p>
+                </div>
+                
+                <div class="text-content">
+                    <p>Для початку, роздрукуйте посібник та карту. Якщо йде дощ, покладіть їх у Zip-Lock пакет. Прочитайте посібник, вивчіть карту та майте гарне уявлення про те, чого очікувати.</p>
+                    <div class="tips-list">
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Завжди перевіряйте погоду</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Повідомте рідних про маршрут</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Візьміть заряджений павербанк</span>
+                        </div>
+                    </div>
+                    <a href="routes.html" class="read-more">читати далі →</a>
+                </div>
             </div>
-            <div class="products-grid" id="featured-products">
-                <!-- Товари завантажуються через JS -->
+            
+            <div class="image-column">
+                <div class="image-content" data-tilt>
+                    <img src="images/03.webp" alt="Карта та час" class="hiker-image">
+                    <div class="image-overlay"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features -->
-    <section class="features">
+    <!-- Featured Routes Section -->
+    <section class="featured-routes">
         <div class="container">
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">🚚</div>
-                    <h3>Швидка доставка</h3>
-                    <p>По всій Україні за 1-3 дні</p>
+            <div class="section-header">
+                <div class="section-title-light">
+                    <span class="badge">Популярні напрямки</span>
+                    <h2>Найкращі маршрути<br>цього сезону</h2>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Гарантія якості</h3>
-                    <p>12 місяців офіційної гарантії</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">💳</div>
-                    <h3>Зручна оплата</h3>
-                    <p>Готівка, картка, безготівковий розрахунок</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Повернення товару</h3>
-                    <p>Протягом 14 днів</p>
+                <a href="routes.html" class="view-all">Всі маршрути <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="featured-slider">
+                <div class="swiper featuredSwiper">
+                    <div class="swiper-wrapper" id="featuredRoutesContainer">
+                        <!-- Routes loaded from db.json -->
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-icon">
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <h2>Підпишіться на нашу розсилку</h2>
+                <p>Отримуйте найкращі поради про активний відпочинок першими!</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Ваш email" id="newsletterEmail" required>
+                    </div>
+                    <button type="submit">
+                        <span>Підписатися</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                <div class="newsletter-subscribers">
+                    <div class="subscriber-avatars">
+                        <img src="images/01.webp" alt="">
+                        <img src="images/02.webp" alt="">
+                        <img src="images/03.webp" alt="">
+                    </div>
+                    <span>+2500 підписників вже з нами</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title-light">
+                <span class="badge">Відгуки</span>
+                <h2>Що кажуть наші<br>мандрівники</h2>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="swiper testimonialsSwiper">
+                    <div class="swiper-wrapper" id="testimonialsContainer">
+                        <!-- Testimonials loaded from db.json -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title-light">
+                <span class="badge">FAQ</span>
+                <h2>Часті запитання</h2>
+            </div>
+            <div class="faq-list" id="faqContainer">
+                <!-- FAQ loaded from db.json -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>TechStore</h3>
-                    <p>Ваш надійний партнер у світі комп'ютерних комплектуючих з 2024 року</p>
+                <div class="footer-logo">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">⛰️</span>
+                        MNTN
+                    </a>
+                    <p>Вирушайте та відкрийте для себе наступний схил, гору та напрямок!</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Навігація</h4>
-                    <ul>
-                        <li><a href="index.html">Головна</a></li>
-                        <li><a href="catalog.html">Каталог</a></li>
-                        <li><a href="#contact">Контакти</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Контакти</h4>
-                    <p>📞 +380 (44) 123-45-67</p>
-                    <p>✉ info@techstore.ua</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Соціальні мережі</h4>
-                    <div class="social-links">
-                        <a href="#">Facebook</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">Telegram</a>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Більше в Блозі</h4>
+                        <ul>
+                            <li><a href="about.html">Про MNTN</a></li>
+                            <li><a href="blog.html">Статті</a></li>
+                            <li><a href="contact.html">Зв'яжіться з нами</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Більше про MNTN</h4>
+                        <ul>
+                            <li><a href="about.html">Наша команда</a></li>
+                            <li><a href="routes.html">Маршрути</a></li>
+                            <li><a href="equipment.html">Спорядження</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 TechStore. Всі права захищені.</p>
+                <p>&copy; 2024 MNTN, Inc. Усі права захищені.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Умови використання</a>
+                    <a href="#">Конфіденційність</a>
+                </div>
             </div>
         </div>
     </footer>
 
-<script src="js/script.js"></script>
-<!-- Тестовий блок для перевірки JSON -->
-<div class="container" style="margin: 40px auto; padding: 20px; background: #f0f9ff; border-radius: 10px;">
-    <h3>🔍 Перевірка завантаження JSON даних:</h3>
-    <div id="json-test"></div>
-</div>
+    <!-- To Top Button -->
+    <a href="#" id="toTopBtn" class="to-top-btn">
+        <i class="fas fa-chevron-up"></i>
+        <svg class="progress-ring" width="50" height="50">
+            <circle class="progress-ring-circle" cx="25" cy="25" r="22" />
+        </svg>
+    </a>
 
-<script>
-    // Тестова функція для перевірки JSON
-    async function testJSON() {
-        const testDiv = document.getElementById('json-test');
-        testDiv.innerHTML = '⏳ Завантаження JSON даних...';
-        
-        try {
-            const response = await fetch('data/products.json');
-            if (!response.ok) {
-                throw new Error(`HTTP помилка: ${response.status}`);
-            }
-            const data = await response.json();
-            const productsCount = data.products.length;
-            
-            testDiv.innerHTML = `
-                ✅ <strong>JSON успішно завантажено!</strong><br>
-                📦 Знайдено товарів: ${productsCount}<br>
-                🔗 Шлях: data/products.json<br>
-                📝 Перший товар: ${data.products[0].name}
-            `;
-        } catch (error) {
-            testDiv.innerHTML = `
-                ❌ <strong>Помилка завантаження JSON!</strong><br>
-                Помилка: ${error.message}<br><br>
-                <strong>Можливі причини:</strong><br>
-                1. Сайт відкрито не через сервер (використовуйте Live Server)<br>
-                2. Неправильний шлях до файлу<br>
-                3. Файл products.json відсутній або пошкоджений
-            `;
-        }
-    }
-    
-    testJSON();
-</script>
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <!-- Registration Modal -->
+    <div class="modal" id="registrationModal">
+        <button class="modal-close">&times;</button>
+        <div class="modal-icon"><i class="fas fa-mountain"></i></div>
+        <h2>Створити акаунт</h2>
+        <p>Приєднуйтесь до MNTN та почніть свою наступну пригоду.</p>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Ім'я користувача</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> Пароль</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> Підтвердіть пароль</label>
+                <input type="password" id="confirm_password" required>
+            </div>
+            <button type="submit" class="submit-btn">
+                <span>Зареєструватися</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </form>
+        <p class="modal-switch">Вже маєте акаунт? <a href="#" id="showLoginBtn">Увійти</a></p>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <button class="modal-close">&times;</button>
+        <div class="modal-icon"><i class="fas fa-sign-in-alt"></i></div>
+        <h2>Увійти</h2>
+        <p>Ласкаво просимо назад!</p>
+        <form id="loginForm">
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="loginEmail" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> Пароль</label>
+                <input type="password" id="loginPassword" required>
+            </div>
+            <button type="submit" class="submit-btn">
+                <span>Увійти</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </form>
+        <p class="modal-switch">Немає акаунту? <a href="#" id="showRegisterBtn">Зареєструватися</a></p>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal modal-lg" id="profileModal">
+        <button class="modal-close">&times;</button>
+        <div class="profile-header">
+            <div class="profile-avatar"><i class="fas fa-user-astronaut"></i></div>
+            <h2 id="profileName">Мандрівник</h2>
+            <div class="profile-xp">
+                <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
+                <span id="xpText">0 XP</span>
+            </div>
+        </div>
+        <div class="profile-achievements" id="profileAchievements"></div>
+        <div class="profile-stats">
+            <div class="profile-stat"><span id="profileVisits">0</span><label>Візитів</label></div>
+            <div class="profile-stat"><span id="profileBookmarks">0</span><label>Закладок</label></div>
+            <div class="profile-stat"><span id="profileComments">0</span><label>Коментарів</label></div>
+        </div>
+        <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Вийти</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
