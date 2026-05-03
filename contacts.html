@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти - Frispes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="preloader" id="preloader"><div class="preloader-inner"><div class="preloader-logo"><i class="fas fa-cube"></i><span>Frispes<span class="dot">.</span></span></div><div class="preloader-bar"><div class="preloader-progress"></div></div></div></div>
+
+    <header>
+        <div class="logo"><i class="fas fa-cube"></i><span>Frispes</span><span class="dot">.</span></div>
+        <nav><ul><li><a href="index.html">Головна</a></li><li><a href="workspace.html">Простір</a></li><li><a href="services.html">Послуги</a></li><li><a href="events.html">Події</a></li><li><a href="reviews.html">Відгуки</a></li><li><a href="contacts.html" class="active">Контакти</a></li></ul></nav>
+        <div class="header-right">
+            <button class="theme-toggle" id="themeToggle" title="Темна тема"><i class="fas fa-moon"></i></button>
+            <div class="auth-buttons"><button class="btn btn-login" id="loginBtn">Вхід</button><button class="btn btn-signup" id="signupBtn">Приєднатись</button></div>
+        </div>
+        <div class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <button class="mobile-close-btn" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
+            <ul><li><a href="index.html">Головна</a></li><li><a href="workspace.html">Простір</a></li><li><a href="services.html">Послуги</a></li><li><a href="events.html">Події</a></li><li><a href="reviews.html">Відгуки</a></li><li><a href="contacts.html" class="active">Контакти</a></li></ul>
+            <div class="mobile-auth"><button class="btn btn-login" id="mobileLoginBtn">Вхід</button><button class="btn btn-signup" id="mobileSignupBtn">Приєднатись</button></div>
+        </div>
+    </div>
+
+    <main>
+        <section class="contacts-hero">
+            <h1>Зв'яжіться з нами</h1>
+            <p>Ми завжди раді відповісти на ваші запитання</p>
+        </section>
+        <section class="contacts-section">
+            <div class="contacts-grid">
+                <div>
+                    <div class="contact-info-card animate-on-scroll">
+                        <h3 style="margin-bottom:1.5rem;color:var(--text);"><i class="fas fa-address-card" style="color:var(--primary);margin-right:0.5rem;"></i> Контактна інформація</h3>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><strong>Адреса</strong><br>м. Київ, вул. Хрещатик 15, офіс 5</div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <div><strong>Телефон</strong><br>+38 (044) 123 45 67</div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div><strong>Email</strong><br>hello@frispes.com</div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-clock"></i>
+                            <div><strong>Графік роботи</strong><br>Пн-Пт: 09:00 - 21:00<br>Сб-Нд: 10:00 - 18:00</div>
+                        </div>
+                    </div>
+                    <div class="map-container animate-on-scroll" style="margin-top: 2rem;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.23456789!2d30.5234!3d50.4501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf1e9a4b8b8f%3A0x2e9b8b8b8b8b8b8b!2z0JzQsNC50LTQsNC9INCd0LXRgdCw0LzQtdC50L3QsA!5e0!3m2!1suk!2sua!4v1700000000000!5m2!1suk!2sua" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="contact-form animate-on-scroll">
+                    <h3 style="margin-bottom:1.5rem;color:var(--text);"><i class="fas fa-paper-plane" style="color:var(--primary);margin-right:0.5rem;"></i> Напишіть нам</h3>
+                    <form id="contactForm">
+                        <input type="text" id="contactName" placeholder="Ваше ім'я" required>
+                        <input type="email" id="contactEmail" placeholder="Ваш Email" required>
+                        <textarea id="contactMessage" rows="5" placeholder="Ваше повідомлення" required></textarea>
+                        <button type="submit" class="btn-primary" style="width:100%">Відправити <i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="logo"><i class="fas fa-cube"></i><span>Frispes</span><span class="dot">.</span></div><p>Ми пропонуємо комфортні простори для вашої найкращої роботи.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div></div>
+                <div class="footer-links"><div class="footer-column"><h4>Простори</h4><ul><li><a href="workspace.html">Коворкінги</a></li><li><a href="workspace.html">Кімнати для зустрічей</a></li></ul></div><div class="footer-column"><h4>Компанія</h4><ul><li><a href="services.html">Послуги</a></li><li><a href="events.html">Події</a></li></ul></div><div class="footer-column"><h4>Підтримка</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Політика</a></li></ul></div><div class="footer-column"><h4>Контакти</h4><ul class="contact-list"><li><i class="fas fa-envelope"></i> hello@frispes.com</li><li><i class="fas fa-phone"></i> +38 (044) 123 45 67</li></ul></div></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 Frispes. Всі права захищено.</p></div>
+        </div>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="loginFormContainer">
+                <h2><i class="fas fa-sign-in-alt"></i> Вхід в акаунт</h2>
+                <form id="loginForm"><div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="your@email.com" required></div><div class="form-group"><label>Пароль</label><input type="password" id="loginPassword" placeholder="********" required></div><button type="submit" class="modal-btn">Увійти</button></form>
+                <p class="switch-link">Немає акаунту? <a href="#" id="switchToReg">Зареєструватись</a></p>
+            </div>
+            <div id="regFormContainer" class="hidden">
+                <h2><i class="fas fa-user-plus"></i> Реєстрація</h2>
+                <form id="regForm"><div class="form-group"><label>Ім'я</label><input type="text" id="regName" placeholder="Іван Петренко" required></div><div class="form-group"><label>Email</label><input type="email" id="regEmail" placeholder="your@email.com" required></div><div class="form-group"><label>Пароль</label><input type="password" id="regPassword" placeholder="********" required></div><div class="form-group"><label>Підтвердіть пароль</label><input type="password" id="regPasswordConfirm" placeholder="********" required></div><button type="submit" class="modal-btn">Створити акаунт</button></form>
+                <p class="switch-link">Вже є акаунт? <a href="#" id="switchToLogin">Увійти</a></p>
+            </div>
+            <div id="authMessage" class="success-message hidden"></div>
+        </div>
+    </div>
+
+    <button id="toTopBtn" class="to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="db.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

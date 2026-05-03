@@ -1,0 +1,335 @@
+{
+  "spaces": [
+    {
+      "id": 1,
+      "name": "Відкритий простір",
+      "type": "open",
+      "description": "Ідеально для фрілансерів та невеликих команд. Зручні робочі місця з ергономічними кріслами.",
+      "price": 150,
+      "priceUnit": "день",
+      "capacity": 30,
+      "available": 12,
+      "amenities": ["wifi", "coffee", "printer", "locker"],
+      "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "rating": 4.8,
+      "reviews_count": 124
+    },
+    {
+      "id": 2,
+      "name": "Приватний офіс",
+      "type": "private",
+      "description": "Максимальна концентрація та конфіденційність. Окрема кімната з шумоізоляцією.",
+      "price": 800,
+      "priceUnit": "день",
+      "capacity": 8,
+      "available": 3,
+      "amenities": ["wifi", "coffee", "printer", "whiteboard", "tv", "locker"],
+      "image": "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "rating": 4.9,
+      "reviews_count": 87
+    },
+    {
+      "id": 3,
+      "name": "Переговорна кімната",
+      "type": "meeting",
+      "description": "Для зустрічей та презентацій. Обладнана проектором та відеозв'язком.",
+      "price": 400,
+      "priceUnit": "год",
+      "capacity": 12,
+      "available": 5,
+      "amenities": ["wifi", "projector", "whiteboard", "tv", "videoconf"],
+      "image": "https://images.pexels.com/photos/2566581/pexels-photo-2566581.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "rating": 4.7,
+      "reviews_count": 56
+    },
+    {
+      "id": 4,
+      "name": "Лаунж-зона",
+      "type": "open",
+      "description": "Комфортна зона для неформальних зустрічей та відпочинку між робочими сесіями.",
+      "price": 100,
+      "priceUnit": "день",
+      "capacity": 20,
+      "available": 8,
+      "amenities": ["wifi", "coffee", "snacks"],
+      "image": "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "rating": 4.6,
+      "reviews_count": 98
+    },
+    {
+      "id": 5,
+      "name": "Студія для подій",
+      "type": "meeting",
+      "description": "Простора зала для воркшопів, презентацій та корпоративних заходів до 100 осіб.",
+      "price": 5000,
+      "priceUnit": "подія",
+      "capacity": 100,
+      "available": 2,
+      "amenities": ["wifi", "projector", "sound", "stage", "catering"],
+      "image": "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "rating": 4.9,
+      "reviews_count": 34
+    },
+    {
+      "id": 6,
+      "name": "VIP-кабінет",
+      "type": "private",
+      "description": "Преміальний офіс з панорамними вікнами, персональним асистентом та кухнею.",
+      "price": 2000,
+      "priceUnit": "день",
+      "capacity": 4,
+      "available": 1,
+      "amenities": ["wifi", "coffee", "printer", "whiteboard", "tv", "kitchen", "assistant"],
+      "image": "https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "rating": 5.0,
+      "reviews_count": 21
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "title": "Нетворкінг зустріч стартапів",
+      "description": "Знайомтесь з однодумцями, обмінюйтесь досвідом та шукайте партнерів для ваших проєктів.",
+      "date": "2025-06-15",
+      "time": "18:00",
+      "duration": "3 год",
+      "spots": 50,
+      "booked": 25,
+      "price": 0,
+      "category": "networking",
+      "image": "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "speaker": "Олександр Мельник"
+    },
+    {
+      "id": 2,
+      "title": "Майстер-клас: Digital Marketing 2025",
+      "description": "Дізнайтесь про актуальні тренди цифрового маркетингу та як застосувати їх у вашому бізнесі.",
+      "date": "2025-06-20",
+      "time": "14:00",
+      "duration": "4 год",
+      "spots": 30,
+      "booked": 18,
+      "price": 500,
+      "category": "workshop",
+      "image": "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "speaker": "Марія Коваленко"
+    },
+    {
+      "id": 3,
+      "title": "IT Weekend: Хакатон",
+      "description": "48-годинний хакатон з призовим фондом 50,000₴. Створюйте інноваційні рішення разом!",
+      "date": "2025-07-05",
+      "time": "10:00",
+      "duration": "48 год",
+      "spots": 100,
+      "booked": 45,
+      "price": 200,
+      "category": "hackathon",
+      "image": "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "speaker": "Команда Frispes"
+    },
+    {
+      "id": 4,
+      "title": "AI та майбутнє роботи",
+      "description": "Панельна дискусія про вплив штучного інтелекту на ринок праці та нові можливості.",
+      "date": "2025-07-12",
+      "time": "16:00",
+      "duration": "2 год",
+      "spots": 80,
+      "booked": 60,
+      "price": 0,
+      "category": "talk",
+      "image": "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "speaker": "Дмитро Іванов"
+    },
+    {
+      "id": 5,
+      "title": "Yoga & Mindfulness для IT-спеціалістів",
+      "description": "Знімайте стрес та покращуйте продуктивність з нашою програмою wellness.",
+      "date": "2025-06-25",
+      "time": "08:00",
+      "duration": "1.5 год",
+      "spots": 20,
+      "booked": 12,
+      "price": 150,
+      "category": "wellness",
+      "image": "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "speaker": "Анна Лисенко"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Анна Коваленко",
+      "role": "UX Designer",
+      "rating": 5,
+      "text": "Чудовий коворкінг! Дуже комфортно працювати, привітний персонал, смачна кава. Рекомендую всім!",
+      "date": "2025-04-20",
+      "image": "https://randomuser.me/api/portraits/women/1.jpg",
+      "verified": true
+    },
+    {
+      "id": 2,
+      "name": "Михайло Шевченко",
+      "role": "Full-Stack Developer",
+      "rating": 5,
+      "text": "Найкращий простір для роботи в Києві. Швидкісний інтернет, зручні крісла, тихо. Ідеальне місце для зосередженої роботи.",
+      "date": "2025-04-18",
+      "image": "https://randomuser.me/api/portraits/men/1.jpg",
+      "verified": true
+    },
+    {
+      "id": 3,
+      "name": "Олена Петренко",
+      "role": "Project Manager",
+      "rating": 4,
+      "text": "Гарне місце для зустрічей. Є все необхідне обладнання. Переговорні кімнати просто супер!",
+      "date": "2025-04-15",
+      "image": "https://randomuser.me/api/portraits/women/2.jpg",
+      "verified": true
+    },
+    {
+      "id": 4,
+      "name": "Дмитро Бондаренко",
+      "role": "Startup Founder",
+      "rating": 5,
+      "text": "Ми перевели всю команду сюди і не пожалкували. Атмосфера неймовірна, постійно знайомимося з цікавими людьми.",
+      "date": "2025-04-10",
+      "image": "https://randomuser.me/api/portraits/men/2.jpg",
+      "verified": true
+    },
+    {
+      "id": 5,
+      "name": "Катерина Мороз",
+      "role": "Content Creator",
+      "rating": 5,
+      "text": "Найкраще місце для творчості! Лаунж-зона — це просто рай. Завжди є натхнення тут працювати.",
+      "date": "2025-03-28",
+      "image": "https://randomuser.me/api/portraits/women/3.jpg",
+      "verified": false
+    },
+    {
+      "id": 6,
+      "name": "Артем Кравченко",
+      "role": "Data Scientist",
+      "rating": 4,
+      "text": "Відмінний інтернет і тиша — те, що потрібно для роботи з даними. Іноді бракує вільних місць у годину-пік.",
+      "date": "2025-03-20",
+      "image": "https://randomuser.me/api/portraits/men/3.jpg",
+      "verified": true
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "name": "Денний абонемент",
+      "description": "Ідеально для фрілансерів та відряджень. Доступ до всіх зон коворкінгу.",
+      "price": 150,
+      "priceUnit": "день",
+      "icon": "fas fa-laptop",
+      "features": ["Wi-Fi 1 Gbps", "Кава та чай", "Доступ до принтера", "Шафка для речей"],
+      "popular": false
+    },
+    {
+      "id": 2,
+      "name": "Тижневий абонемент",
+      "description": "Для активної роботи протягом тижня. Знижка 15% порівняно з денним.",
+      "price": 600,
+      "priceUnit": "тиждень",
+      "icon": "fas fa-calendar-week",
+      "features": ["Все з денного", "Фіксоване робоче місце", "2 год переговорної", "Знижка в кафе 10%"],
+      "popular": false
+    },
+    {
+      "id": 3,
+      "name": "Місячний абонемент",
+      "description": "Найкраща ціна для постійних клієнтів. Максимум переваг.",
+      "price": 2000,
+      "priceUnit": "місяць",
+      "icon": "fas fa-calendar-alt",
+      "features": ["Все з тижневого", "8 год переговорної", "Гостьовий доступ", "Знижка в кафе 20%", "Фітнес-зона"],
+      "popular": true
+    },
+    {
+      "id": 4,
+      "name": "Командний пакет",
+      "description": "Для команд від 5 осіб з окремим офісом та менеджером.",
+      "price": 8000,
+      "priceUnit": "місяць",
+      "icon": "fas fa-users",
+      "features": ["Приватний офіс", "Необмежена переговорна", "Персональний менеджер", "Корпоративні заходи", "Паркомісце"],
+      "popular": false
+    },
+    {
+      "id": 5,
+      "name": "Оренда переговорної",
+      "description": "Для зустрічей та презентацій. Проектор, відеозв'язок, дошка.",
+      "price": 400,
+      "priceUnit": "год",
+      "icon": "fas fa-chalkboard",
+      "features": ["Проектор 4K", "Відеоконференція", "Маркерна дошка", "Кава для учасників"],
+      "popular": false
+    },
+    {
+      "id": 6,
+      "name": "Івент-пакет",
+      "description": "Оренда залу для подій до 100 осіб з повним сервісом.",
+      "price": 5000,
+      "priceUnit": "подія",
+      "icon": "fas fa-glass-cheers",
+      "features": ["Зала до 100 осіб", "Сцена та звук", "Кейтерінг", "Фотозона", "Технічна підтримка"],
+      "popular": false
+    }
+  ],
+  "team": [
+    {
+      "id": 1,
+      "name": "Олександр Мельник",
+      "role": "CEO & Засновник",
+      "bio": "10+ років досвіду в управлінні коворкінг-просторами",
+      "image": "https://randomuser.me/api/portraits/men/10.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Марія Коваленко",
+      "role": "Менеджер спільноти",
+      "bio": "Створює найкращу атмосферу для нашої спільноти",
+      "image": "https://randomuser.me/api/portraits/women/10.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Ігор Петренко",
+      "role": "Технічний директор",
+      "bio": "Забезпечує найкращу інфраструктуру та технології",
+      "image": "https://randomuser.me/api/portraits/men/11.jpg"
+    }
+  ],
+  "stats": {
+    "happy_clients": 500,
+    "workspaces": 50,
+    "meeting_rooms": 500,
+    "event_spaces": 100,
+    "countries": 60,
+    "internet_speed": "1 Gbps",
+    "mentors": 5000,
+    "communities": 200
+  },
+  "facilities": [
+    { "id": 1, "icon": "fas fa-wifi", "name": "Wi-Fi 1 Gbps", "description": "Надшвидкісний інтернет по всьому простору" },
+    { "id": 2, "icon": "fas fa-mug-hot", "name": "Безкоштовна кава", "description": "Свіжа кава та чай цілодобово" },
+    { "id": 3, "icon": "fas fa-print", "name": "Принтер/Сканер", "description": "Безкоштовний друк до 50 сторінок" },
+    { "id": 4, "icon": "fas fa-parking", "name": "Парковка", "description": "Безкоштовна парковка для резидентів" },
+    { "id": 5, "icon": "fas fa-child", "name": "Дитяча кімната", "description": "Професійна няня та ігрова зона" },
+    { "id": 6, "icon": "fas fa-dumbbell", "name": "Фітнес-зона", "description": "Тренажери та душові" },
+    { "id": 7, "icon": "fas fa-utensils", "name": "Кафе", "description": "Здорові перекуси та обіди" },
+    { "id": 8, "icon": "fas fa-lock", "name": "Безпека 24/7", "description": "Відеоспостереження та контроль доступу" }
+  ],
+  "faq": [
+    { "id": 1, "question": "Як дізнатися, чи вільний простір?", "answer": "Перегляньте онлайн-карту просторів у вашому особистому кабінеті або зателефонуйте нам." },
+    { "id": 2, "question": "Як забронювати місце?", "answer": "Оберіть простір, дату та час у формі бронювання на нашому сайті або через мобільний застосунок." },
+    { "id": 3, "question": "Як працюють відгуки?", "answer": "Після кожного бронювання ви можете залишити відгук та оцінку якості обслуговування." },
+    { "id": 4, "question": "Чи є пробний період?", "answer": "Так! Перший день у коворкінгу — безкоштовно. Просто зареєструйтесь на сайті." },
+    { "id": 5, "question": "Чи можна працювати вночі?", "answer": "Так, ми працюємо 24/7. Резиденти з місячним абонементом мають цілодобовий доступ." },
+    { "id": 6, "question": "Чи є знижки для студентів?", "answer": "Так! Студенти отримують знижку 30% на денний та тижневий абонементи за пред'явленням студентського." }
+  ]
+}

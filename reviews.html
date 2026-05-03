@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Відгуки - Frispes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="preloader" id="preloader"><div class="preloader-inner"><div class="preloader-logo"><i class="fas fa-cube"></i><span>Frispes<span class="dot">.</span></span></div><div class="preloader-bar"><div class="preloader-progress"></div></div></div></div>
+
+    <header>
+        <div class="logo"><i class="fas fa-cube"></i><span>Frispes</span><span class="dot">.</span></div>
+        <nav><ul><li><a href="index.html">Головна</a></li><li><a href="workspace.html">Простір</a></li><li><a href="services.html">Послуги</a></li><li><a href="events.html">Події</a></li><li><a href="reviews.html" class="active">Відгуки</a></li><li><a href="contacts.html">Контакти</a></li></ul></nav>
+        <div class="header-right">
+            <button class="theme-toggle" id="themeToggle" title="Темна тема"><i class="fas fa-moon"></i></button>
+            <div class="auth-buttons"><button class="btn btn-login" id="loginBtn">Вхід</button><button class="btn btn-signup" id="signupBtn">Приєднатись</button></div>
+        </div>
+        <div class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <button class="mobile-close-btn" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
+            <ul><li><a href="index.html">Головна</a></li><li><a href="workspace.html">Простір</a></li><li><a href="services.html">Послуги</a></li><li><a href="events.html">Події</a></li><li><a href="reviews.html" class="active">Відгуки</a></li><li><a href="contacts.html">Контакти</a></li></ul>
+            <div class="mobile-auth"><button class="btn btn-login" id="mobileLoginBtn">Вхід</button><button class="btn btn-signup" id="mobileSignupBtn">Приєднатись</button></div>
+        </div>
+    </div>
+
+    <main>
+        <section class="reviews-hero">
+            <h1>Відгуки клієнтів</h1>
+            <p>Що кажуть про нас наші резиденти</p>
+        </section>
+        <section class="reviews-section">
+            <div class="reviews-grid" id="reviewsGrid"></div>
+            <div class="add-review animate-on-scroll" id="addReviewSection">
+                <h3><i class="fas fa-pen"></i> Залишити відгук</h3>
+                <div class="rating-select" id="ratingSelect">
+                    <button class="star-rating selected" data-rating="1">★</button>
+                    <button class="star-rating selected" data-rating="2">★</button>
+                    <button class="star-rating selected" data-rating="3">★</button>
+                    <button class="star-rating selected" data-rating="4">★</button>
+                    <button class="star-rating selected" data-rating="5">★</button>
+                </div>
+                <input type="hidden" id="reviewRating" value="5">
+                <textarea id="reviewText" rows="4" placeholder="Поділіться вашим досвідом..."></textarea>
+                <button class="btn-primary" id="submitReview">Відправити відгук <i class="fas fa-paper-plane"></i></button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="logo"><i class="fas fa-cube"></i><span>Frispes</span><span class="dot">.</span></div><p>Ми пропонуємо комфортні простори для вашої найкращої роботи.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div></div>
+                <div class="footer-links"><div class="footer-column"><h4>Простори</h4><ul><li><a href="workspace.html">Коворкінги</a></li><li><a href="workspace.html">Кімнати для зустрічей</a></li></ul></div><div class="footer-column"><h4>Компанія</h4><ul><li><a href="services.html">Послуги</a></li><li><a href="events.html">Події</a></li></ul></div><div class="footer-column"><h4>Підтримка</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Політика</a></li></ul></div><div class="footer-column"><h4>Контакти</h4><ul class="contact-list"><li><i class="fas fa-envelope"></i> hello@frispes.com</li><li><i class="fas fa-phone"></i> +38 (044) 123 45 67</li></ul></div></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 Frispes. Всі права захищено.</p></div>
+        </div>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="loginFormContainer">
+                <h2><i class="fas fa-sign-in-alt"></i> Вхід в акаунт</h2>
+                <form id="loginForm"><div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="your@email.com" required></div><div class="form-group"><label>Пароль</label><input type="password" id="loginPassword" placeholder="********" required></div><button type="submit" class="modal-btn">Увійти</button></form>
+                <p class="switch-link">Немає акаунту? <a href="#" id="switchToReg">Зареєструватись</a></p>
+            </div>
+            <div id="regFormContainer" class="hidden">
+                <h2><i class="fas fa-user-plus"></i> Реєстрація</h2>
+                <form id="regForm"><div class="form-group"><label>Ім'я</label><input type="text" id="regName" placeholder="Іван Петренко" required></div><div class="form-group"><label>Email</label><input type="email" id="regEmail" placeholder="your@email.com" required></div><div class="form-group"><label>Пароль</label><input type="password" id="regPassword" placeholder="********" required></div><div class="form-group"><label>Підтвердіть пароль</label><input type="password" id="regPasswordConfirm" placeholder="********" required></div><button type="submit" class="modal-btn">Створити акаунт</button></form>
+                <p class="switch-link">Вже є акаунт? <a href="#" id="switchToLogin">Увійти</a></p>
+            </div>
+            <div id="authMessage" class="success-message hidden"></div>
+        </div>
+    </div>
+
+    <button id="toTopBtn" class="to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="db.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

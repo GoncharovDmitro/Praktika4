@@ -3,204 +3,475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore - Комп'ютерні комплектуючі</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Frispes | Сучасний коворкінг для ваших ідей</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-wrapper">
-                <div class="logo">
-                    <a href="index.html">
-                        <h1>Tech<span>Store</span></h1>
-                    </a>
-                </div>
-                <nav class="nav">
-                    <ul class="nav-menu">
-                        <li><a href="index.html" class="active">Головна</a></li>
-                        <li><a href="catalog.html">Каталог</a></li>
-                        <li><a href="#contact">Контакти</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions">
-                    <div class="cart-icon">
-                        <a href="cart.html">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                            <span id="cart-count" class="cart-count">0</span>
-                        </a>
-                    </div>
-                    <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
-                </div>
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-logo">
+                <i class="fas fa-cube"></i>
+                <span>Frispes<span class="dot">.</span></span>
             </div>
+            <div class="preloader-bar"><div class="preloader-progress"></div></div>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <i class="fas fa-cube"></i>
+            <span>Frispes</span><span class="dot">.</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Головна</a></li>
+                <li><a href="workspace.html">Простір</a></li>
+                <li><a href="services.html">Послуги</a></li>
+                <li><a href="events.html">Події</a></li>
+                <li><a href="reviews.html">Відгуки</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <button class="search-toggle" id="searchToggle" title="Пошук"><i class="fas fa-search"></i></button>
+            <button class="theme-toggle" id="themeToggle" title="Темна тема"><i class="fas fa-moon"></i></button>
+            <div class="auth-buttons">
+                <button class="btn btn-login" id="loginBtn">Вхід</button>
+                <button class="btn btn-signup" id="signupBtn">Приєднатись</button>
+            </div>
+        </div>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
         </div>
     </header>
 
-    <!-- Hero Banner -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Найкращі комплектуючі для вашого ПК</h2>
-                <p>Високоякісні процесори, відеокарти, пам'ять та накопичувачі від провідних брендів</p>
-                <a href="catalog.html" class="btn btn-primary">Перейти до каталогу</a>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <button class="mobile-close-btn" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
+            <ul>
+                <li><a href="index.html" class="active">Головна</a></li>
+                <li><a href="workspace.html">Простір</a></li>
+                <li><a href="services.html">Послуги</a></li>
+                <li><a href="events.html">Події</a></li>
+                <li><a href="reviews.html">Відгуки</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+            <div class="mobile-auth">
+                <button class="btn btn-login" id="mobileLoginBtn">Вхід</button>
+                <button class="btn btn-signup" id="mobileSignupBtn">Приєднатись</button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Categories Section -->
-    <section class="categories">
-        <div class="container">
-            <div class="section-title">
-                <h2>Популярні категорії</h2>
-                <p>Оберіть необхідну категорію для вашого комп'ютера</p>
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Шукайте простори, події, послуги..." autocomplete="off">
+                <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
             </div>
-            <div class="categories-grid" id="categories-grid">
-                <div class="category-card" data-category="CPU">
-                    <div class="category-icon">⚡</div>
-                    <h3>Процесори</h3>
-                    <p>Intel та AMD</p>
-                </div>
-                <div class="category-card" data-category="GPU">
-                    <div class="category-icon">🎮</div>
-                    <h3>Відеокарти</h3>
-                    <p>NVIDIA та Radeon</p>
-                </div>
-                <div class="category-card" data-category="RAM">
-                    <div class="category-icon">💾</div>
-                    <h3>Оперативна пам'ять</h3>
-                    <p>DDR4 та DDR5</p>
-                </div>
-                <div class="category-card" data-category="накопичувачі">
-                    <div class="category-icon">💿</div>
-                    <h3>Накопичувачі</h3>
-                    <p>SSD та HDD</p>
-                </div>
-            </div>
+            <div class="search-results" id="searchResults"></div>
         </div>
-    </section>
+    </div>
 
-    <!-- Featured Products -->
-    <section class="featured-products">
-        <div class="container">
-            <div class="section-title">
-                <h2>Рекомендовані товари</h2>
-                <p>Найпопулярніші товари цього місяця</p>
+    <main>
+        <section class="hero">
+            <canvas id="particleCanvas" class="particle-canvas"></canvas>
+            <div class="hero-bg">
+                <div class="hero-bg-overlay"></div>
             </div>
-            <div class="products-grid" id="featured-products">
-                <!-- Товари завантажуються через JS -->
-            </div>
-        </div>
-    </section>
 
-    <!-- Features -->
-    <section class="features">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">🚚</div>
-                    <h3>Швидка доставка</h3>
-                    <p>По всій Україні за 1-3 дні</p>
+            <div class="hero-container">
+                <div class="hero-left animate-on-scroll">
+                    <span class="hero-badge"><i class="fas fa-rocket"></i> Представляємо</span>
+                    <h1>
+                        Революційний <span class="gradient-text">коворкінг</span><br>
+                        для реалізації ваших <span class="typing-text" id="typingText"></span>
+                    </h1>
+                    <p class="hero-desc">
+                        У Frispes ми очолюємо нові ініціативи та надаємо менторство новим стартапам, 
+                        допомагаючи їм зростати на ключових локальних, регіональних та глобальних ринках.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary" id="exploreSpaceBtn">Дослідити простір <i class="fas fa-arrow-right"></i></button>
+                        <button class="btn-secondary" id="virtualTourBtn"><i class="fas fa-video"></i> Віртуальний тур</button>
+                    </div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Гарантія якості</h3>
-                    <p>12 місяців офіційної гарантії</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">💳</div>
-                    <h3>Зручна оплата</h3>
-                    <p>Готівка, картка, безготівковий розрахунок</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Повернення товару</h3>
-                    <p>Протягом 14 днів</p>
+
+                <div class="hero-right animate-on-scroll">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.pexels.com/photos/1181397/pexels-photo-1181397.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Сучасний коворкінг">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-users"></i>
+                            <div><span class="counter" data-target="500">0</span>+<br><small>Щасливих клієнтів</small></div>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-cube"></i>
+                            <div><span class="counter" data-target="50">0</span>+<br><small>Робочих просторів</small></div>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-star"></i>
+                            <div>4.9<br><small>Середній рейтинг</small></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
+            <div class="booking-bar animate-on-scroll">
+                <div class="booking-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="booking-info">
+                        <label>Локація</label>
+                        <span>Київ, вул. Хрещатик 15</span>
+                    </div>
+                </div>
+                <div class="booking-item">
+                    <i class="fas fa-chair"></i>
+                    <div class="booking-info">
+                        <label>Тип простору</label>
+                        <span>Приватний офіс</span>
+                    </div>
+                </div>
+                <div class="booking-item">
+                    <i class="fas fa-calendar"></i>
+                    <div class="booking-info">
+                        <label>Дата</label>
+                        <span>Виберіть дату</span>
+                    </div>
+                </div>
+                <button class="booking-btn" id="openBookingModal">Забронювати <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </section>
+
+        <section class="spaces-showcase">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-tag">Наші Простори</span>
+                    <h2>Робочі місця для<br>будь-яких потреб</h2>
+                    <p>Наш простір створений, щоб дати вам інший досвід під час роботи з командою або особисто</p>
+                </div>
+                <div class="spaces-grid" id="spacesGrid">
+                    <!-- Populated from DB -->
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-wrapper">
+                    <div class="stats-grid animate-on-scroll">
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-door-open"></i></div>
+                            <div class="stat-number"><span class="counter" data-target="500">0</span>+</div>
+                            <div class="stat-label">Кімнат для зустрічей</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                            <div class="stat-number"><span class="counter" data-target="100">0</span>+</div>
+                            <div class="stat-label">Просторів для подій</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                            <div class="stat-number"><span class="counter" data-target="60">0</span>+</div>
+                            <div class="stat-label">Країн</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-wifi"></i></div>
+                            <div class="stat-number">1 Gbps</div>
+                            <div class="stat-label">Швидкість інтернету</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                            <div class="stat-number"><span class="counter" data-target="5000">0</span>+</div>
+                            <div class="stat-label">Менторів стартапів</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-handshake"></i></div>
+                            <div class="stat-number"><span class="counter" data-target="200">0</span>+</div>
+                            <div class="stat-label">Внутрішніх спільнот</div>
+                        </div>
+                    </div>
+                    <div class="stats-info animate-on-scroll">
+                        <span class="stats-badge">Чому Frispes</span>
+                        <h3>Ми революціонізуємо ваш робочий простір</h3>
+                        <p>Маючи десятирічний досвід та знання, ми вирішили переосмислити коворкінг, створений, щоб допомогти новим стартапам зростати та реалізовувати свої ідеї.</p>
+                        <a href="services.html" class="btn-primary" style="margin-top:1.5rem;display:inline-flex;">Переглянути послуги <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="facilities-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-tag">Наші Зручності</span>
+                    <h2>Все необхідне для<br>продуктивної роботи</h2>
+                </div>
+                <div class="facilities-grid" id="facilitiesGrid">
+                    <!-- Populated from DB -->
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-tag">Відгуки</span>
+                    <h2>Що кажуть наші<br>резиденти</h2>
+                </div>
+                <div class="testimonials-slider" id="testimonialsSlider">
+                    <!-- Populated from DB -->
+                </div>
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-tag">Довідковий центр</span>
+                    <h2>Знайдіть відповіді на всі<br>важливі питання</h2>
+                </div>
+                <div class="faq-accordion" id="faqAccordion">
+                    <!-- Populated from DB -->
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content animate-on-scroll">
+                    <h2>Готові розпочати?</h2>
+                    <p>Приєднуйтесь до спільноти Frispes вже сьогодні. Перший день — безкоштовно!</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary" id="footerSignupBtn">Приєднатись зараз <i class="fas fa-arrow-right"></i></button>
+                        <a href="contacts.html" class="btn-outline">Зв'язатися з нами</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>TechStore</h3>
-                    <p>Ваш надійний партнер у світі комп'ютерних комплектуючих з 2024 року</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Навігація</h4>
-                    <ul>
-                        <li><a href="index.html">Головна</a></li>
-                        <li><a href="catalog.html">Каталог</a></li>
-                        <li><a href="#contact">Контакти</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Контакти</h4>
-                    <p>📞 +380 (44) 123-45-67</p>
-                    <p>✉ info@techstore.ua</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Соціальні мережі</h4>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-cube"></i>
+                        <span>Frispes</span><span class="dot">.</span>
+                    </div>
+                    <p>Ми пропонуємо комфортні простори, затишне кафе, високошвидкісний інтернет та багато іншого для вашої найкращої роботи та зустрічей.</p>
                     <div class="social-links">
-                        <a href="#">Facebook</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">Telegram</a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Простори</h4>
+                        <ul>
+                            <li><a href="workspace.html">Коворкінги</a></li>
+                            <li><a href="workspace.html">Кімнати для зустрічей</a></li>
+                            <li><a href="workspace.html">Простори для подій</a></li>
+                            <li><a href="workspace.html">Лаунж-зона</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Компанія</h4>
+                        <ul>
+                            <li><a href="services.html">Послуги</a></li>
+                            <li><a href="events.html">Події</a></li>
+                            <li><a href="reviews.html">Відгуки</a></li>
+                            <li><a href="contacts.html">Контакти</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Підтримка</h4>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Політика конфіденційності</a></li>
+                            <li><a href="#">Договір оферти</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Контакти</h4>
+                        <ul class="contact-list">
+                            <li><i class="fas fa-envelope"></i> hello@frispes.com</li>
+                            <li><i class="fas fa-phone"></i> +38 (044) 123 45 67</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Київ, вул. Хрещатик 15</li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 TechStore. Всі права захищені.</p>
+                <p>&copy; 2025 Frispes. Всі права захищено.</p>
             </div>
         </div>
     </footer>
 
-<script src="js/script.js"></script>
-<!-- Тестовий блок для перевірки JSON -->
-<div class="container" style="margin: 40px auto; padding: 20px; background: #f0f9ff; border-radius: 10px;">
-    <h3>🔍 Перевірка завантаження JSON даних:</h3>
-    <div id="json-test"></div>
-</div>
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toastContainer"></div>
 
-<script>
-    // Тестова функція для перевірки JSON
-    async function testJSON() {
-        const testDiv = document.getElementById('json-test');
-        testDiv.innerHTML = '⏳ Завантаження JSON даних...';
-        
-        try {
-            const response = await fetch('data/products.json');
-            if (!response.ok) {
-                throw new Error(`HTTP помилка: ${response.status}`);
-            }
-            const data = await response.json();
-            const productsCount = data.products.length;
-            
-            testDiv.innerHTML = `
-                ✅ <strong>JSON успішно завантажено!</strong><br>
-                📦 Знайдено товарів: ${productsCount}<br>
-                🔗 Шлях: data/products.json<br>
-                📝 Перший товар: ${data.products[0].name}
-            `;
-        } catch (error) {
-            testDiv.innerHTML = `
-                ❌ <strong>Помилка завантаження JSON!</strong><br>
-                Помилка: ${error.message}<br><br>
-                <strong>Можливі причини:</strong><br>
-                1. Сайт відкрито не через сервер (використовуйте Live Server)<br>
-                2. Неправильний шлях до файлу<br>
-                3. Файл products.json відсутній або пошкоджений
-            `;
-        }
-    }
-    
-    testJSON();
-</script>
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-calendar-check"></i> Бронювання простору</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>Тип простору</label>
+                    <select id="bookingType" required>
+                        <option value="">Оберіть тип</option>
+                        <option value="open">Відкритий простір - 150₴/день</option>
+                        <option value="private">Приватний офіс - 800₴/день</option>
+                        <option value="meeting">Переговорна - 400₴/год</option>
+                        <option value="vip">VIP-кабінет - 2000₴/день</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Дата початку</label>
+                        <input type="date" id="bookingStart" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Дата завершення</label>
+                        <input type="date" id="bookingEnd" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Кількість осіб</label>
+                    <input type="number" id="bookingPersons" min="1" max="100" placeholder="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Ваше ім'я</label>
+                    <input type="text" id="bookingName" placeholder="Іван Петренко" required>
+                </div>
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input type="tel" id="bookingPhone" placeholder="+38 (XXX) XXX XX XX" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="bookingEmail" placeholder="ivan@example.com" required>
+                </div>
+                <button type="submit" class="modal-btn">Підтвердити бронювання <i class="fas fa-check"></i></button>
+            </form>
+            <div id="bookingMessage" class="success-message hidden"></div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content modal-video">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-video"></i> Віртуальний тур Frispes</h2>
+            <div class="video-container">
+                <video id="virtualVideo" controls poster="https://images.pexels.com/photos/1181397/pexels-photo-1181397.jpeg?auto=compress&cs=tinysrgb&w=800">
+                    <source src="#" type="video/mp4">
+                </video>
+                <div class="video-placeholder" id="videoPlaceholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Відео-тур буде доступний найближчим часом</p>
+                    <small>Наразі ви можете переглянути фото нашого простору</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="loginFormContainer">
+                <h2><i class="fas fa-sign-in-alt"></i> Вхід в акаунт</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" id="loginPassword" placeholder="********" required>
+                    </div>
+                    <button type="submit" class="modal-btn">Увійти <i class="fas fa-arrow-right"></i></button>
+                </form>
+                <p class="switch-link">Немає акаунту? <a href="#" id="switchToReg">Зареєструватись</a></p>
+            </div>
+            <div id="regFormContainer" class="hidden">
+                <h2><i class="fas fa-user-plus"></i> Реєстрація</h2>
+                <form id="regForm">
+                    <div class="form-group">
+                        <label>Ім'я</label>
+                        <input type="text" id="regName" placeholder="Іван Петренко" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="regEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" id="regPassword" placeholder="********" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Підтвердіть пароль</label>
+                        <input type="password" id="regPasswordConfirm" placeholder="********" required>
+                    </div>
+                    <button type="submit" class="modal-btn">Створити акаунт <i class="fas fa-user-plus"></i></button>
+                </form>
+                <p class="switch-link">Вже є акаунт? <a href="#" id="switchToLogin">Увійти</a></p>
+            </div>
+            <div id="authMessage" class="success-message hidden"></div>
+        </div>
+    </div>
+
+    <button id="toTopBtn" class="to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <button class="chat-toggle" id="chatToggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-badge">1</span>
+        </button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+                    <div>
+                        <strong>Frispes Bot</strong>
+                        <small>Онлайн</small>
+                    </div>
+                </div>
+                <button class="chat-minimize" id="chatMinimize"><i class="fas fa-minus"></i></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <div class="chat-bubble">Привіт! Я бот Frispes. Чим можу допомогти? Напишіть ваше питання або оберіть:</div>
+                </div>
+                <div class="chat-quick-replies">
+                    <button class="quick-reply" data-reply="Хочу забронювати місце">Забронювати</button>
+                    <button class="quick-reply" data-reply="Які ціни?">Ціни</button>
+                    <button class="quick-reply" data-reply="Де ви знаходитесь?">Адреса</button>
+                    <button class="quick-reply" data-reply="Які є події?">Події</button>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Напишіть повідомлення...">
+                <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="db.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

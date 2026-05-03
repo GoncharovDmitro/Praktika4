@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Простір - Frispes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="preloader" id="preloader"><div class="preloader-inner"><div class="preloader-logo"><i class="fas fa-cube"></i><span>Frispes<span class="dot">.</span></span></div><div class="preloader-bar"><div class="preloader-progress"></div></div></div></div>
+
+    <header>
+        <div class="logo"><i class="fas fa-cube"></i><span>Frispes</span><span class="dot">.</span></div>
+        <nav><ul><li><a href="index.html">Головна</a></li><li><a href="workspace.html" class="active">Простір</a></li><li><a href="services.html">Послуги</a></li><li><a href="events.html">Події</a></li><li><a href="reviews.html">Відгуки</a></li><li><a href="contacts.html">Контакти</a></li></ul></nav>
+        <div class="header-right">
+            <button class="theme-toggle" id="themeToggle" title="Темна тема"><i class="fas fa-moon"></i></button>
+            <div class="auth-buttons"><button class="btn btn-login" id="loginBtn">Вхід</button><button class="btn btn-signup" id="signupBtn">Приєднатись</button></div>
+        </div>
+        <div class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <button class="mobile-close-btn" id="mobileCloseBtn"><i class="fas fa-times"></i></button>
+            <ul><li><a href="index.html">Головна</a></li><li><a href="workspace.html" class="active">Простір</a></li><li><a href="services.html">Послуги</a></li><li><a href="events.html">Події</a></li><li><a href="reviews.html">Відгуки</a></li><li><a href="contacts.html">Контакти</a></li></ul>
+            <div class="mobile-auth"><button class="btn btn-login" id="mobileLoginBtn">Вхід</button><button class="btn btn-signup" id="mobileSignupBtn">Приєднатись</button></div>
+        </div>
+    </div>
+
+    <main>
+        <section class="page-header">
+            <h1>Наші Простори</h1>
+            <p>Знайдіть ідеальне місце для вашої роботи</p>
+        </section>
+
+        <section class="filter-section">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Усі простори</button>
+                <button class="filter-btn" data-filter="open">Відкритий простір</button>
+                <button class="filter-btn" data-filter="private">Приватні офіси</button>
+                <button class="filter-btn" data-filter="meeting">Переговорні</button>
+                <button class="filter-btn" data-filter="event">Івент-зали</button>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="workspace-gallery" id="workspaceGallery">
+                <div class="gallery-item animate-on-scroll" data-category="open">
+                    <img src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Відкритий простір">
+                    <div class="gallery-item-content">
+                        <h4>Відкритий простір</h4>
+                        <div class="gallery-item-meta"><span class="price">150₴/день</span><span class="availability">12 вільних</span></div>
+                    </div>
+                    <button class="book-now-btn">Забронювати</button>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="private">
+                    <img src="https://images.pexels.com/photos/3182759/pexels-photo-3182759.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Приватний офіс">
+                    <div class="gallery-item-content">
+                        <h4>Приватний офіс</h4>
+                        <div class="gallery-item-meta"><span class="price">800₴/день</span><span class="availability">3 вільних</span></div>
+                    </div>
+                    <button class="book-now-btn">Забронювати</button>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="meeting">
+                    <img src="https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Переговорна кімната">
+                    <div class="gallery-item-content">
+                        <h4>Переговорна кімната</h4>
+                        <div class="gallery-item-meta"><span class="price">400₴/год</span><span class="availability">2 вільних</span></div>
+                    </div>
+                    <button class="book-now-btn">Забронювати</button>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="event">
+                    <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Івент-простір">
+                    <div class="gallery-item-content">
+                        <h4>Івент-простір</h4>
+                        <div class="gallery-item-meta"><span class="price">3000₴/день</span><span class="availability">1 вільний</span></div>
+                    </div>
+                    <button class="book-now-btn">Забронювати</button>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="open">
+                    <img src="https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Зона відпочинку">
+                    <div class="gallery-item-content">
+                        <h4>Зона відпочинку</h4>
+                        <div class="gallery-item-meta"><span class="price">Безкоштовно</span><span class="availability">Відкрита</span></div>
+                    </div>
+                    <button class="book-now-btn">Дізнатись більше</button>
+                </div>
+                <div class="gallery-item animate-on-scroll" data-category="private">
+                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Студія для фото/відео">
+                    <div class="gallery-item-content">
+                        <h4>Студія для фото/відео</h4>
+                        <div class="gallery-item-meta"><span class="price">600₴/год</span><span class="availability">1 вільна</span></div>
+                    </div>
+                    <button class="book-now-btn">Забронювати</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="logo"><i class="fas fa-cube"></i><span>Frispes</span><span class="dot">.</span></div><p>Ми пропонуємо комфортні простори для вашої найкращої роботи.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div></div>
+                <div class="footer-links"><div class="footer-column"><h4>Простори</h4><ul><li><a href="workspace.html">Коворкінги</a></li><li><a href="workspace.html">Кімнати для зустрічей</a></li></ul></div><div class="footer-column"><h4>Компанія</h4><ul><li><a href="services.html">Послуги</a></li><li><a href="events.html">Події</a></li></ul></div><div class="footer-column"><h4>Підтримка</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Політика</a></li></ul></div><div class="footer-column"><h4>Контакти</h4><ul class="contact-list"><li><i class="fas fa-envelope"></i> hello@frispes.com</li><li><i class="fas fa-phone"></i> +38 (044) 123 45 67</li></ul></div></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 Frispes. Всі права захищено.</p></div>
+        </div>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="loginFormContainer">
+                <h2><i class="fas fa-sign-in-alt"></i> Вхід в акаунт</h2>
+                <form id="loginForm"><div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="your@email.com" required></div><div class="form-group"><label>Пароль</label><input type="password" id="loginPassword" placeholder="********" required></div><button type="submit" class="modal-btn">Увійти</button></form>
+                <p class="switch-link">Немає акаунту? <a href="#" id="switchToReg">Зареєструватись</a></p>
+            </div>
+            <div id="regFormContainer" class="hidden">
+                <h2><i class="fas fa-user-plus"></i> Реєстрація</h2>
+                <form id="regForm"><div class="form-group"><label>Ім'я</label><input type="text" id="regName" placeholder="Іван Петренко" required></div><div class="form-group"><label>Email</label><input type="email" id="regEmail" placeholder="your@email.com" required></div><div class="form-group"><label>Пароль</label><input type="password" id="regPassword" placeholder="********" required></div><div class="form-group"><label>Підтвердіть пароль</label><input type="password" id="regPasswordConfirm" placeholder="********" required></div><button type="submit" class="modal-btn">Створити акаунт</button></form>
+                <p class="switch-link">Вже є акаунт? <a href="#" id="switchToLogin">Увійти</a></p>
+            </div>
+            <div id="authMessage" class="success-message hidden"></div>
+        </div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-calendar-check"></i> Бронювання простору</h2>
+            <form id="bookingForm"><div class="form-group"><label>Тип простору</label><select id="bookingType" required><option value="">Оберіть тип</option><option value="open">Відкритий простір - 150₴/день</option><option value="private">Приватний офіс - 800₴/день</option><option value="meeting">Переговорна - 400₴/год</option></select></div><div class="form-row"><div class="form-group"><label>Дата початку</label><input type="date" id="bookingStart" required></div><div class="form-group"><label>Дата завершення</label><input type="date" id="bookingEnd" required></div></div><div class="form-group"><label>Кількість осіб</label><input type="number" id="bookingPersons" min="1" max="100" placeholder="1" required></div><div class="form-group"><label>Ваше ім'я</label><input type="text" id="bookingName" placeholder="Іван Петренко" required></div><div class="form-group"><label>Телефон</label><input type="tel" id="bookingPhone" placeholder="+38 (XXX) XXX XX XX" required></div><div class="form-group"><label>Email</label><input type="email" id="bookingEmail" placeholder="ivan@example.com" required></div><button type="submit" class="modal-btn">Підтвердити бронювання</button></form>
+            <div id="bookingMessage" class="success-message hidden"></div>
+        </div>
+    </div>
+
+    <button id="toTopBtn" class="to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="db.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
