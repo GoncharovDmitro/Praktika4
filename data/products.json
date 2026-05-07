@@ -1,0 +1,224 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Intel Core i9-13900K",
+      "category": "CPU",
+      "price": 21500,
+      "description": "24 ядра (8 P-core + 16 E-core), 32 потоки, частота до 5.8 ГГц, LGA 1700. Підтримка DDR5 та PCIe 5.0. Ідеальний для найвимогливіших завдань, професійного рендерингу та стримінгу.",
+      "specs": "Сокет: LGA 1700, TDP: 125W, Кеш: 36MB, Частота: 5.8 ГГц",
+      "inStock": true,
+      "image": "pic/1.png"
+    },
+    {
+      "id": 2,
+      "name": "AMD Ryzen 9 7950X",
+      "category": "CPU",
+      "price": 23500,
+      "description": "16 ядер, 32 потоки, частота до 5.7 ГГц, AM5, 170 Вт. Найпотужніший процесор для робочих станцій. Відмінно підходить для відеомонтажу, 3D моделювання та програмування.",
+      "specs": "Сокет: AM5, TDP: 170W, Кеш: 80MB, Частота: 5.7 ГГц",
+      "inStock": true,
+      "image": "pic/2.png"
+    },
+    {
+      "id": 3,
+      "name": "Intel Core i7-13700K",
+      "category": "CPU",
+      "price": 16500,
+      "description": "16 ядер, 24 потоки, частота до 5.4 ГГц, 30 МБ кешу. Оптимальний вибір для геймінгу та продуктивності. Чудово показує себе в іграх та робочих задачах.",
+      "specs": "Сокет: LGA 1700, TDP: 125W, Кеш: 30MB, Частота: 5.4 ГГц",
+      "inStock": true,
+      "image": "pic/3.png"
+    },
+    {
+      "id": 4,
+      "name": "AMD Ryzen 7 7800X3D",
+      "category": "CPU",
+      "price": 18900,
+      "description": "8 ядер, 16 потоків, 3D V-Cache, ідеально для ігор. Завдяки 3D V-Cache показує рекордну продуктивність в іграх.",
+      "specs": "Сокет: AM5, TDP: 120W, 3D V-Cache: 96MB, Частота: 5.0 ГГц",
+      "inStock": true,
+      "image": "pic/4.png"
+    },
+    {
+      "id": 5,
+      "name": "Intel Core i5-13600K",
+      "category": "CPU",
+      "price": 11200,
+      "description": "14 ядер, 20 потоків, частота до 5.1 ГГц, 24 МБ кешу. Найкраще співвідношення ціна/продуктивність. Ідеальний для збірки ігрового ПК.",
+      "specs": "Сокет: LGA 1700, TDP: 125W, Кеш: 24MB, Частота: 5.1 ГГц",
+      "inStock": false,
+      "image": "pic/5.png"
+    },
+    {
+      "id": 6,
+      "name": "NVIDIA GeForce RTX 4090",
+      "category": "GPU",
+      "price": 68000,
+      "description": "24 ГБ GDDR6X, 16384 ядер CUDA, трасування променів, DLSS 3. Флагманська відеокарта для 4K геймінгу та професійних завдань.",
+      "specs": "VRAM: 24GB GDDR6X, Шина: 384-bit, TDP: 450W, CUDA: 16384",
+      "inStock": true,
+      "image": "pic/6.png"
+    },
+    {
+      "id": 7,
+      "name": "NVIDIA GeForce RTX 4080",
+      "category": "GPU",
+      "price": 48000,
+      "description": "16 ГБ GDDR6X, 9728 ядер CUDA, підтримка DLSS 3. Потужна відеокарта для високоякісного геймінгу та стримінгу. Забезпечує плавний геймплей в 4K.",
+      "specs": "VRAM: 16GB GDDR6X, Шина: 256-bit, TDP: 320W, CUDA: 9728",
+      "inStock": true,
+      "image": "pic/7.png"
+    },
+    {
+      "id": 8,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": 44500,
+      "description": "24 ГБ GDDR6, 6144 потокових процесорів, 384-бітна шина. Гідна альтернатива RTX 4090 з великим обʼємом памʼяті.",
+      "specs": "VRAM: 24GB GDDR6, Шина: 384-bit, TDP: 355W, Stream: 6144",
+      "inStock": true,
+      "image": "pic/8.png"
+    },
+    {
+      "id": 9,
+      "name": "NVIDIA GeForce RTX 4070 Ti",
+      "category": "GPU",
+      "price": 32500,
+      "description": "12 ГБ GDDR6X, 7680 ядер CUDA, енергоефективна. Оптимальний вибір для 1440p геймінгу. Відмінно показує себе в сучасних іграх з DLSS 3.",
+      "specs": "VRAM: 12GB GDDR6X, Шина: 192-bit, TDP: 285W, CUDA: 7680",
+      "inStock": true,
+      "image": "pic/9.png"
+    },
+    {
+      "id": 10,
+      "name": "AMD Radeon RX 7800 XT",
+      "category": "GPU",
+      "price": 27800,
+      "description": "16 ГБ GDDR6, 3840 потокових процесорів. Чудовий вибір для 1440p геймінгу без зайвих витрат.",
+      "specs": "VRAM: 16GB GDDR6, Шина: 256-bit, TDP: 263W, Stream: 3840",
+      "inStock": false,
+      "image": "pic/10.png"
+    },
+    {
+      "id": 11,
+      "name": "Corsair Vengeance 32 ГБ DDR5",
+      "category": "RAM",
+      "price": 5200,
+      "description": "2x16 ГБ, частота 6000 МГц, CL36, чорний радіатор. Високошвидкісна оперативна памʼять для нових систем. Ідеально підходить для ігор та робочих станцій.",
+      "specs": "Тип: DDR5, Обʼєм: 32GB, Частота: 6000MHz, Латентність: CL36",
+      "inStock": true,
+      "image": "pic/11.png"
+    },
+    {
+      "id": 12,
+      "name": "Kingston Fury 64 ГБ DDR5",
+      "category": "RAM",
+      "price": 9800,
+      "description": "2x32 ГБ, частота 5600 МГц, RGB підсвітка. Максимальний обʼєм памʼяті для професійних завдань — для відеомонтажу, 3D графіки та віртуалізації.",
+      "specs": "Тип: DDR5, Обʼєм: 64GB, Частота: 5600MHz, RGB: Так",
+      "inStock": true,
+      "image": "pic/12.png"
+    },
+    {
+      "id": 13,
+      "name": "G.Skill Trident Z 16 ГБ DDR4",
+      "category": "RAM",
+      "price": 2800,
+      "description": "2x8 ГБ, частота 3600 МГц, CL18, для старих систем. Відмінний апгрейд для платформи AM4 або Intel 12-го покоління.",
+      "specs": "Тип: DDR4, Обʼєм: 16GB, Частота: 3600MHz, Латентність: CL18",
+      "inStock": true,
+      "image": "pic/13.png"
+    },
+    {
+      "id": 14,
+      "name": "Crucial 16 ГБ DDR5",
+      "category": "RAM",
+      "price": 2900,
+      "description": "1x16 ГБ, частота 4800 МГц, бюджетний варіант. Надійна та недорога памʼять для початкових збірок на DDR5.",
+      "specs": "Тип: DDR5, Обʼєм: 16GB, Частота: 4800MHz",
+      "inStock": true,
+      "image": "pic/14.png"
+    },
+    {
+      "id": 15,
+      "name": "Patriot Viper 32 ГБ DDR4",
+      "category": "RAM",
+      "price": 4100,
+      "description": "2x16 ГБ, частота 3200 МГц, алюмінієвий радіатор. Оптимальний вибір для ігрових систем на DDR4.",
+      "specs": "Тип: DDR4, Обʼєм: 32GB, Частота: 3200MHz",
+      "inStock": false,
+      "image": "pic/15.png"
+    },
+    {
+      "id": 16,
+      "name": "Samsung 990 Pro 1TB NVMe",
+      "category": "накопичувачі",
+      "price": 4800,
+      "description": "M.2 NVMe, читання 7450 МБ/с, запис 6900 МБ/с, PCIe 4.0. Найшвидший NVMe накопичувач на ринку.",
+      "specs": "Формат: M.2, Обʼєм: 1TB, Швидкість: 7450 MB/s, PCIe 4.0",
+      "inStock": true,
+      "image": "pic/16.png"
+    },
+    {
+      "id": 17,
+      "name": "Western Digital Black SN850X 2TB",
+      "category": "накопичувачі",
+      "price": 8900,
+      "description": "M.2 NVMe, читання 7300 МБ/с, з розсіювачем тепла. Великий обʼєм та висока швидкість для геймерів та професіоналів.",
+      "specs": "Формат: M.2, Обʼєм: 2TB, Швидкість: 7300 MB/s, PCIe 4.0",
+      "inStock": true,
+      "image": "pic/17.png"
+    },
+    {
+      "id": 18,
+      "name": "Kingston KC3000 512GB",
+      "category": "накопичувачі",
+      "price": 2850,
+      "description": "M.2 NVMe, читання 7000 МБ/с, бюджетний варіант. Недорогий вхід у світ високих швидкостей для системного диска.",
+      "specs": "Формат: M.2, Обʼєм: 512GB, Швидкість: 7000 MB/s, PCIe 4.0",
+      "inStock": true,
+      "image": "pic/18.png"
+    },
+    {
+      "id": 19,
+      "name": "Seagate BarraCuda 4TB HDD",
+      "category": "накопичувачі",
+      "price": 3500,
+      "description": "7200 об/хв, SATA 6 Гб/с, 256 МБ кешу. Великий обʼєм для зберігання файлів, ігор та медіатеки.",
+      "specs": "Формат: 3.5, Обʼєм: 4TB, Швидкість: 7200 RPM, Кеш: 256MB",
+      "inStock": true,
+      "image": "pic/19.png"
+    },
+    {
+      "id": 20,
+      "name": "Crucial P3 Plus 2TB NVMe",
+      "category": "накопичувачі",
+      "price": 5200,
+      "description": "M.2 NVMe, читання 5000 МБ/с, PCIe 4.0. Чудове співвідношення ціни та продуктивності.",
+      "specs": "Формат: M.2, Обʼєм: 2TB, Швидкість: 5000 MB/s, PCIe 4.0",
+      "inStock": true,
+      "image": "pic/20.png"
+    },
+    {
+      "id": 21,
+      "name": "Toshiba 2TB HDD",
+      "category": "накопичувачі",
+      "price": 2300,
+      "description": "5400 об/хв, SATA 6 Гб/с, для зберігання файлів. Економічне рішення для великих обсягів даних.",
+      "specs": "Формат: 3.5, Обʼєм: 2TB, Швидкість: 5400 RPM",
+      "inStock": false,
+      "image": "pic/21.png"
+    },
+    {
+      "id": 22,
+      "name": "AMD Ryzen 5 7600X",
+      "category": "CPU",
+      "price": 7800,
+      "description": "6 ядер, 12 потоків, частота до 5.3 ГГц, AM5. Найкращий процесор для початкової збірки на AM5.",
+      "specs": "Сокет: AM5, TDP: 105W, Кеш: 38MB, Частота: 5.3 ГГц",
+      "inStock": true,
+      "image": "pic/22.png"
+    }
+  ]
+}
