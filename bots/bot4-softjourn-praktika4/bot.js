@@ -138,7 +138,15 @@ async function fetchWeather(city) {
 
 // ---------- Bot ----------
 
-const bot = new TelegramBot(BOT_TOKEN, { polling: true });
+// `family: 4` змушує @cypress/request використати тільки IPv4 при зверненні
+// до api.telegram.org. На середовищах без IPv6-маршруту (типово для багатьох
+// VPS і Render) спроба happy-eyeballs з IPv6 одразу падає `ENETUNREACH`, що
+// у цій версії бібліотеки розгортається у `EFATAL: AggregateError` і
+// блокує long polling.
+const bot = new TelegramBot(BOT_TOKEN, {
+  polling: true,
+  request: { family: 4 },
+});
 
 // node-telegram-bot-api мутує reply_markup (серіалізує його у JSON-рядок)
 // під час відправлення, тому повторне використання того самого об'єкта
