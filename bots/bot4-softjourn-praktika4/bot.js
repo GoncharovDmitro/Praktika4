@@ -140,19 +140,25 @@ async function fetchWeather(city) {
 
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
-const MAIN_MENU = {
-  reply_markup: {
-    keyboard: [
-      [{ text: 'Каталог' }, { text: 'Кошик' }],
-      [{ text: 'Мої замовлення' }, { text: 'Оформити замовлення' }],
-      [{ text: 'Погода для доставки' }, { text: 'Сайт' }],
-      [{ text: 'Довідка' }],
-    ],
-    resize_keyboard: true,
-  },
-};
-
-const REMOVE = { reply_markup: { remove_keyboard: true } };
+// node-telegram-bot-api мутує reply_markup (серіалізує його у JSON-рядок)
+// під час відправлення, тому повторне використання того самого об'єкта
+// в наступних викликах sendMessage ламається. Тому будуємо клавіатуру
+// функцією, що повертає свіжий об'єкт кожного разу.
+const MAIN_KEYBOARD = [
+  [{ text: 'Каталог' }, { text: 'Кошик' }],
+  [{ text: 'Мої замовлення' }, { text: 'Оформити замовлення' }],
+  [{ text: 'Погода для доставки' }, { text: 'Сайт' }],
+  [{ text: 'Довідка' }],
+];
+const MAIN_MENU_BUTTONS = MAIN_KEYBOARD.flat().map((b) => b.text);
+function mainMenu() {
+  return {
+    reply_markup: { keyboard: MAIN_KEYBOARD, resize_keyboard: true },
+  };
+}
+function removeKb() {
+  return { reply_markup: { remove_keyboard: true } };
+}
 
 // memory state
 const sessions = new Map();
@@ -166,14 +172,14 @@ bot.onText(/^\/start\b/, (msg) => {
   bot.sendMessage(
     msg.chat.id,
     'Вітаю в TechStore-боті! Каталог комп\'ютерних комплектуючих з нашого магазину.',
-    MAIN_MENU
+    mainMenu()
   );
 });
 
 bot.onText(/^\/help\b/, (msg) => sendHelp(msg.chat.id));
 bot.onText(/^\/cancel\b/, (msg) => {
   clearState(msg.from.id);
-  bot.sendMessage(msg.chat.id, 'Дію скасовано.', MAIN_MENU);
+  bot.sendMessage(msg.chat.id, 'Дію скасовано.', mainMenu());
 });
 
 function sendHelp(chatId) {
@@ -244,7 +250,7 @@ bot.on('message', async (msg) => {
       const rows = stmt.listCart.all(userId);
       if (rows.length === 0) {
         clearState(userId);
-        bot.sendMessage(chatId, 'Кошик порожній — оформлення скасовано.', MAIN_MENU);
+        bot.sendMessage(chatId, 'Кошик порожній — оформлення скасовано.', mainMenu());
         return;
       }
       const total = rows.reduce((s, r) => s + r.price * r.qty, 0);
@@ -255,7 +261,7 @@ bot.on('message', async (msg) => {
       bot.sendMessage(
         chatId,
         `Дякуємо! Замовлення прийнято. Сума: ${total} грн.\nНаш менеджер звʼяжеться найближчим часом.`,
-        MAIN_MENU
+        mainMenu()
       );
       return;
     }
@@ -263,16 +269,16 @@ bot.on('message', async (msg) => {
       clearState(userId);
       try {
         const w = await fetchWeather(text);
-        if (!w) bot.sendMessage(chatId, 'Місто не знайдено.', MAIN_MENU);
+        if (!w) bot.sendMessage(chatId, 'Місто не знайдено.', mainMenu());
         else
           bot.sendMessage(
             chatId,
             `Погода (${w.place}):\n  Температура: ${w.temp}°C\n  Вітер: ${w.wind} м/с`,
-            MAIN_MENU
+            mainMenu()
           );
       } catch (e) {
         console.warn('weather error', e.message);
-        bot.sendMessage(chatId, 'Сервіс погоди недоступний.', MAIN_MENU);
+        bot.sendMessage(chatId, 'Сервіс погоди недоступний.', mainMenu());
       }
       return;
     }
@@ -280,10 +286,10 @@ bot.on('message', async (msg) => {
       clearState(userId);
       const id = parseInt(text, 10);
       if (Number.isNaN(id)) {
-        bot.sendMessage(chatId, 'Очікую ID позиції.', MAIN_MENU);
+        bot.sendMessage(chatId, 'Очікую ID позиції.', mainMenu());
       } else {
         const r = stmt.deleteCartItem.run(id, userId);
-        bot.sendMessage(chatId, r.changes ? 'Видалено.' : 'Не знайдено.', MAIN_MENU);
+        bot.sendMessage(chatId, r.changes ? 'Видалено.' : 'Не знайдено.', mainMenu());
       }
       return;
     }
@@ -341,7 +347,7 @@ bot.on('message', async (msg) => {
       break;
     case 'Назад':
       clearState(userId);
-      bot.sendMessage(chatId, 'Головне меню:', MAIN_MENU);
+      bot.sendMessage(chatId, 'Головне меню:', mainMenu());
       break;
     case 'Кошик': {
       const rows = stmt.listCart.all(userId);
@@ -366,19 +372,19 @@ bot.on('message', async (msg) => {
     }
     case 'Видалити позицію':
       setState(userId, { name: 'cart_delete', data: {} });
-      bot.sendMessage(chatId, 'Введіть ID позиції (з колонки #):', REMOVE);
+      bot.sendMessage(chatId, 'Введіть ID позиції (з колонки #):', removeKb());
       break;
     case 'Очистити кошик':
       stmt.clearCart.run(userId);
-      bot.sendMessage(chatId, 'Кошик очищено.', MAIN_MENU);
+      bot.sendMessage(chatId, 'Кошик очищено.', mainMenu());
       break;
     case 'Оформити замовлення': {
       const rows = stmt.listCart.all(userId);
       if (rows.length === 0) {
-        bot.sendMessage(chatId, 'Кошик порожній.', MAIN_MENU);
+        bot.sendMessage(chatId, 'Кошик порожній.', mainMenu());
       } else {
         setState(userId, { name: 'order_city', data: {} });
-        bot.sendMessage(chatId, 'У яке місто доставити?', REMOVE);
+        bot.sendMessage(chatId, 'У яке місто доставити?', removeKb());
       }
       break;
     }
@@ -397,7 +403,7 @@ bot.on('message', async (msg) => {
     }
     case 'Погода для доставки':
       setState(userId, { name: 'weather_city', data: {} });
-      bot.sendMessage(chatId, 'Назва міста:', REMOVE);
+      bot.sendMessage(chatId, 'Назва міста:', removeKb());
       break;
     case 'Сайт':
       bot.sendMessage(chatId, `Сайт TechStore: ${SITE_URL}`);
@@ -406,7 +412,7 @@ bot.on('message', async (msg) => {
       sendHelp(chatId);
       break;
     default:
-      if (!state) bot.sendMessage(chatId, 'Оберіть пункт меню.', MAIN_MENU);
+      if (!state) bot.sendMessage(chatId, 'Оберіть пункт меню.', mainMenu());
   }
 });
 

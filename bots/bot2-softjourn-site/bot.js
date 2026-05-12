@@ -91,19 +91,28 @@ async function fetchWeather(city) {
 
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
-const MAIN_MENU = {
-  reply_markup: {
-    keyboard: [
-      [{ text: 'Про Nova GX' }, { text: 'Характеристики' }],
-      [{ text: 'Передзамовлення' }, { text: 'Мої заявки' }],
-      [{ text: 'Погода для доставки' }, { text: 'Сайт' }],
-      [{ text: 'Довідка' }],
-    ],
-    resize_keyboard: true,
-  },
-};
-
-const REMOVE = { reply_markup: { remove_keyboard: true } };
+// Розкладка головного меню. Кожен виклик `mainMenu()` повертає НОВИЙ об'єкт,
+// бо node-telegram-bot-api мутує reply_markup (серіалізує в JSON-рядок) при
+// відправці — повторне використання того самого об'єкта зробить keyboard
+// undefined на другому виклику.
+const MAIN_KEYBOARD = [
+  [{ text: 'Про Nova GX' }, { text: 'Характеристики' }],
+  [{ text: 'Передзамовлення' }, { text: 'Мої заявки' }],
+  [{ text: 'Погода для доставки' }, { text: 'Сайт' }],
+  [{ text: 'Довідка' }],
+];
+const MAIN_MENU_BUTTONS = MAIN_KEYBOARD.flat().map((b) => b.text);
+function mainMenu() {
+  return {
+    reply_markup: {
+      keyboard: MAIN_KEYBOARD,
+      resize_keyboard: true,
+    },
+  };
+}
+function removeKb() {
+  return { reply_markup: { remove_keyboard: true } };
+}
 
 // FSM: ламповий стейт-машинний реєстр у пам'яті
 const sessions = new Map();
@@ -113,7 +122,7 @@ const clearState = (id) => sessions.delete(id);
 
 function isCommandLike(text) {
   if (!text) return false;
-  return text.startsWith('/') || MAIN_MENU.reply_markup.keyboard.flat().some((b) => b.text === text);
+  return text.startsWith('/') || MAIN_MENU_BUTTONS.includes(text);
 }
 
 bot.onText(/^\/start\b/, (msg) => {
@@ -123,14 +132,14 @@ bot.onText(/^\/start\b/, (msg) => {
     msg.chat.id,
     'Вітаю! Це офіційний бот-консультант відеокарти Nova GX від Softjourn.\n' +
       'Оберіть розділ у меню.',
-    MAIN_MENU
+    mainMenu()
   );
 });
 
 bot.onText(/^\/help\b/, (msg) => sendHelp(msg.chat.id));
 bot.onText(/^\/cancel\b/, (msg) => {
   clearState(msg.from.id);
-  bot.sendMessage(msg.chat.id, 'Дію скасовано.', MAIN_MENU);
+  bot.sendMessage(msg.chat.id, 'Дію скасовано.', mainMenu());
 });
 
 function sendHelp(chatId) {
@@ -178,7 +187,7 @@ bot.on('message', async (msg) => {
       const note = text === '-' ? '' : text;
       stmtInsertPreorder.run(userId, state.data.city, state.data.contact, note, nowIso());
       clearState(userId);
-      bot.sendMessage(chatId, 'Дякуємо! Заявку прийнято. Наш менеджер зв\'яжеться з вами.', MAIN_MENU);
+      bot.sendMessage(chatId, 'Дякуємо! Заявку прийнято. Наш менеджер зв\'яжеться з вами.', mainMenu());
       return;
     }
     if (state.name === 'weather_city') {
@@ -186,7 +195,7 @@ bot.on('message', async (msg) => {
       try {
         const w = await fetchWeather(text);
         if (!w) {
-          bot.sendMessage(chatId, 'Місто не знайдено.', MAIN_MENU);
+          bot.sendMessage(chatId, 'Місто не знайдено.', mainMenu());
         } else {
           bot.sendMessage(
             chatId,
@@ -194,12 +203,12 @@ bot.on('message', async (msg) => {
               `  Температура: ${w.temp}°C\n` +
               `  Вологість: ${w.humidity}%\n` +
               `  Вітер: ${w.wind} м/с`,
-            MAIN_MENU
+            mainMenu()
           );
         }
       } catch (e) {
         console.warn('weather error', e.message);
-        bot.sendMessage(chatId, 'Сервіс погоди недоступний.', MAIN_MENU);
+        bot.sendMessage(chatId, 'Сервіс погоди недоступний.', mainMenu());
       }
       return;
     }
@@ -207,10 +216,10 @@ bot.on('message', async (msg) => {
       clearState(userId);
       const id = parseInt(text, 10);
       if (Number.isNaN(id)) {
-        bot.sendMessage(chatId, 'Очікую ID (число).', MAIN_MENU);
+        bot.sendMessage(chatId, 'Очікую ID (число).', mainMenu());
       } else {
         const r = stmtDeletePreorder.run(id, userId);
-        bot.sendMessage(chatId, r.changes ? `Заявку #${id} видалено.` : 'Заявку не знайдено.', MAIN_MENU);
+        bot.sendMessage(chatId, r.changes ? `Заявку #${id} видалено.` : 'Заявку не знайдено.', mainMenu());
       }
       return;
     }
@@ -243,7 +252,7 @@ bot.on('message', async (msg) => {
       break;
     case 'Передзамовлення':
       setState(userId, { name: 'preorder_city', data: {} });
-      bot.sendMessage(chatId, 'У якому місті отримати замовлення?', REMOVE);
+      bot.sendMessage(chatId, 'У якому місті отримати замовлення?', removeKb());
       break;
     case 'Мої заявки': {
       const rows = stmtListPreorders.all(userId);
@@ -266,15 +275,15 @@ bot.on('message', async (msg) => {
     }
     case 'Видалити заявку':
       setState(userId, { name: 'delete_preorder', data: {} });
-      bot.sendMessage(chatId, 'Введіть ID заявки для видалення:', REMOVE);
+      bot.sendMessage(chatId, 'Введіть ID заявки для видалення:', removeKb());
       break;
     case 'Назад':
       clearState(userId);
-      bot.sendMessage(chatId, 'Головне меню:', MAIN_MENU);
+      bot.sendMessage(chatId, 'Головне меню:', mainMenu());
       break;
     case 'Погода для доставки':
       setState(userId, { name: 'weather_city', data: {} });
-      bot.sendMessage(chatId, 'Назва міста (українською/англійською):', REMOVE);
+      bot.sendMessage(chatId, 'Назва міста (українською/англійською):', removeKb());
       break;
     case 'Сайт':
       bot.sendMessage(chatId, `Лендинг: ${SITE_URL}`);
@@ -283,7 +292,7 @@ bot.on('message', async (msg) => {
       sendHelp(chatId);
       break;
     default:
-      if (!state) bot.sendMessage(chatId, 'Оберіть, будь ласка, пункт меню.', MAIN_MENU);
+      if (!state) bot.sendMessage(chatId, 'Оберіть, будь ласка, пункт меню.', mainMenu());
   }
 });
 
