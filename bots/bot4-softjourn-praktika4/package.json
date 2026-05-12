@@ -1,0 +1,17 @@
+{
+  "name": "bot4-softjourn-praktika4",
+  "version": "1.0.0",
+  "description": "Telegram bot for TechStore site (Praktika4)",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "dotenv": "^16.4.5",
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}
