@@ -1,29 +1,29 @@
 /* ============================================
-   Роман Горін — Gallery Site Styles
-   Dark theme with neon accents
+   Файли Романа Горіна — Gallery Site Styles
+   Mysterious black & red theme
    ============================================ */
 
 :root {
-    --bg-primary: #0a0a0f;
-    --bg-secondary: #12121a;
-    --bg-card: #1a1a2e;
-    --bg-card-hover: #222240;
-    --text-primary: #f0f0ff;
-    --text-secondary: #a0a0c0;
-    --text-muted: #666680;
-    --accent: #7b2ff7;
-    --accent-light: #a855f7;
-    --accent-glow: rgba(123, 47, 247, 0.4);
-    --accent-2: #f72fab;
-    --accent-2-glow: rgba(247, 47, 171, 0.3);
-    --gold: #ffd700;
-    --gold-glow: rgba(255, 215, 0, 0.3);
-    --border: rgba(255, 255, 255, 0.06);
+    --bg-primary: #050505;
+    --bg-secondary: #0a0a0a;
+    --bg-card: #141414;
+    --bg-card-hover: #1e1010;
+    --text-primary: #f0e8e8;
+    --text-secondary: #a09090;
+    --text-muted: #665555;
+    --accent: #cc0000;
+    --accent-light: #ff1a1a;
+    --accent-glow: rgba(204, 0, 0, 0.4);
+    --accent-2: #8b0000;
+    --accent-2-glow: rgba(139, 0, 0, 0.3);
+    --gold: #ff3333;
+    --gold-glow: rgba(255, 51, 51, 0.25);
+    --border: rgba(255, 255, 255, 0.04);
     --radius: 16px;
     --radius-sm: 10px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.6);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.8);
 }
 
 * {
@@ -139,7 +139,7 @@ body {
 .nav-link:hover,
 .nav-link.active {
     color: var(--text-primary);
-    background: rgba(123, 47, 247, 0.15);
+    background: rgba(204, 0, 0, 0.15);
 }
 
 .nav-link.active {
@@ -199,8 +199,8 @@ body {
 
 .hero-badge {
     display: inline-block;
-    background: rgba(123, 47, 247, 0.15);
-    border: 1px solid rgba(123, 47, 247, 0.3);
+    background: rgba(204, 0, 0, 0.15);
+    border: 1px solid rgba(204, 0, 0, 0.3);
     padding: 8px 20px;
     border-radius: 50px;
     font-size: 0.85rem;
@@ -320,7 +320,7 @@ body {
 
 .btn-outline:hover {
     border-color: var(--accent);
-    background: rgba(123, 47, 247, 0.1);
+    background: rgba(204, 0, 0, 0.1);
     transform: translateY(-2px);
 }
 
@@ -400,8 +400,8 @@ body {
 
 .section-badge {
     display: inline-block;
-    background: rgba(123, 47, 247, 0.1);
-    border: 1px solid rgba(123, 47, 247, 0.2);
+    background: rgba(204, 0, 0, 0.1);
+    border: 1px solid rgba(204, 0, 0, 0.2);
     padding: 6px 16px;
     border-radius: 50px;
     font-size: 0.8rem;
@@ -489,7 +489,7 @@ body {
 
 .gallery-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(123, 47, 247, 0.2);
+    box-shadow: 0 12px 40px rgba(204, 0, 0, 0.2);
 }
 
 .gallery-item:hover img {
@@ -571,7 +571,7 @@ body {
 .video-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-    border-color: rgba(123, 47, 247, 0.3);
+    border-color: rgba(204, 0, 0, 0.3);
 }
 
 .video-card video {
@@ -615,7 +615,7 @@ body {
 .audio-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-    border-color: rgba(123, 47, 247, 0.3);
+    border-color: rgba(204, 0, 0, 0.3);
 }
 
 .audio-visual {
@@ -708,7 +708,7 @@ body {
 .screenshot-item:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-    border-color: rgba(123, 47, 247, 0.3);
+    border-color: rgba(204, 0, 0, 0.3);
 }
 
 .screenshot-item:hover img {

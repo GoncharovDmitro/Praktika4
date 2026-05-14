@@ -1,5 +1,5 @@
 /* ============================================
-   Роман Горін — Gallery Site Scripts
+   Файли Романа Горіна — Gallery Site Scripts
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(123, 47, 247, ${this.opacity})`;
+            ctx.fillStyle = `rgba(204, 0, 0, ${this.opacity})`;
             ctx.fill();
         }
     }
