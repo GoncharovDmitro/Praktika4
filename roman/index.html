@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Роман Горін — Галерея Приколів</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Particles background -->
+    <canvas id="particles"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">👑</span>
+                <span class="logo-text">Роман<span class="accent">Горін</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link active">Головна</a></li>
+                <li><a href="#gallery" class="nav-link">Галерея</a></li>
+                <li><a href="#videos" class="nav-link">Відео</a></li>
+                <li><a href="#audio" class="nav-link">Аудіо</a></li>
+                <li><a href="#screenshots" class="nav-link">Скріншоти</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">✨ Легенда серед нас ✨</div>
+                <h1 class="hero-title">
+                    <span class="line line-1">Роман</span>
+                    <span class="line line-2">Горін</span>
+                </h1>
+                <p class="hero-subtitle">Ексклюзивна колекція найкращих приколів, мемів та моментів</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-target="180">0</span>
+                        <span class="stat-label">Файлів</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="150">0</span>
+                        <span class="stat-label">Картинок</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="20">0</span>
+                        <span class="stat-label">Відео</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="4">0</span>
+                        <span class="stat-label">Аудіо</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#gallery" class="btn btn-primary">
+                        <span>Переглянути галерею</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#videos" class="btn btn-outline">
+                        <span>Дивитись відео</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <div class="glow"></div>
+                    <img src="media/Роман Горін.png" alt="Роман Горін" class="hero-img" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Скроль вниз</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🎨 Колекція</span>
+                <h2 class="section-title">Галерея Приколів</h2>
+                <p class="section-desc">Найкращі картинки та меми про Романа Горіна</p>
+            </div>
+
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Всі</button>
+                <button class="filter-btn" data-filter="meme">Меми</button>
+                <button class="filter-btn" data-filter="edit">Фотошоп</button>
+                <button class="filter-btn" data-filter="ai">AI-Генерації</button>
+                <button class="filter-btn" data-filter="other">Інше</button>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Memes & Fun Images -->
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/РоманГорін.jpg" alt="Роман Горін" loading="lazy">
+                    <div class="gallery-overlay"><span>Роман Горін</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/RoboRoma.png" alt="РобоРома" loading="lazy">
+                    <div class="gallery-overlay"><span>РобоРома</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/Оптимус Горін.jpg" alt="Оптимус Горін" loading="lazy">
+                    <div class="gallery-overlay"><span>Оптимус Горін</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/стул романа горина.png" alt="Стул Романа Горина" loading="lazy">
+                    <div class="gallery-overlay"><span>Стул Романа Горина</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/джабароман.png" alt="Джабароман" loading="lazy">
+                    <div class="gallery-overlay"><span>Джабароман</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/сквидроман.png" alt="Сквідроман" loading="lazy">
+                    <div class="gallery-overlay"><span>Сквідроман</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рома котик.png" alt="Рома Котик" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Котик</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/сперман.png" alt="Сперман" loading="lazy">
+                    <div class="gallery-overlay"><span>Сперман</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/гадзома.png" alt="Ґадзома" loading="lazy">
+                    <div class="gallery-overlay"><span>Ґадзома</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/літ. романа.png" alt="Літ. Романа" loading="lazy">
+                    <div class="gallery-overlay"><span>Література Романа</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/ромалет.png" alt="Ромалет" loading="lazy">
+                    <div class="gallery-overlay"><span>Ромалет</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/ромалет.jpg" alt="Ромалет JPG" loading="lazy">
+                    <div class="gallery-overlay"><span>Ромалет</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рома бравл старс.png" alt="Рома Бравл Старс" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Бравл Старс</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/рома дракон.png" alt="Рома Дракон" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Дракон</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рома хатт.png" alt="Рома Хатт" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Хатт</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/рома мобчик.png" alt="Рома Мобчик" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Мобчик</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рома чеп.png" alt="Рома Чеп" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Чеп</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рома тихий чеп.png" alt="Рома Тихий Чеп" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Тихий Чеп</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/рома джедай.png" alt="Рома Джедай" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Джедай</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/рома ситх.png" alt="Рома Сітх" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Сітх</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рома поп ит.png" alt="Рома Поп Іт" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Поп Іт</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рома копирует тролфейс.png" alt="Рома копірує тролфейс" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома копірує тролфейс</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/рома джаба хатик.png" alt="Рома Джаба Хатик" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Джаба Хатик</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рома і друн хатт.png" alt="Рома і Друн Хатт" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома і Друн Хатт</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/хайпует рома.png" alt="Хайпує Рома" loading="lazy">
+                    <div class="gallery-overlay"><span>Хайпує Рома</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рус ома.png" alt="Рус Ома" loading="lazy">
+                    <div class="gallery-overlay"><span>Рус Ома</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/робот.png" alt="Робот" loading="lazy">
+                    <div class="gallery-overlay"><span>Робот</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/романчик.png" alt="Романчик" loading="lazy">
+                    <div class="gallery-overlay"><span>Романчик</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/роман хочет ответить.png" alt="Роман хоче відповісти" loading="lazy">
+                    <div class="gallery-overlay"><span>Роман хоче відповісти</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/стул ромы и роман.png" alt="Стул Роми і Роман" loading="lazy">
+                    <div class="gallery-overlay"><span>Стул Роми і Роман</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/стул ромы и алексей.png" alt="Стул Роми і Алексей" loading="lazy">
+                    <div class="gallery-overlay"><span>Стул Роми і Алексей</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/пальчики омчики.png" alt="Пальчики омчики" loading="lazy">
+                    <div class="gallery-overlay"><span>Пальчики Омчики</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/гоблин добби.png" alt="Гоблін Доббі" loading="lazy">
+                    <div class="gallery-overlay"><span>Гоблін Доббі</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/микола хатт.png" alt="Микола Хатт" loading="lazy">
+                    <div class="gallery-overlay"><span>Микола Хатт</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/підсиживатель перший.png" alt="Підсиживатель Перший" loading="lazy">
+                    <div class="gallery-overlay"><span>Підсиживатель Перший</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/подсиживатель.png" alt="Підсиживатель" loading="lazy">
+                    <div class="gallery-overlay"><span>Підсиживатель</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/ультра подсиживатели.png" alt="Ультра підсиживателі" loading="lazy">
+                    <div class="gallery-overlay"><span>Ультра Підсиживателі</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/подсиживатели90.png" alt="Підсиживателі 90" loading="lazy">
+                    <div class="gallery-overlay"><span>Підсиживателі 90</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/активировать силу тролфейса.png" alt="Активувати силу тролфейса" loading="lazy">
+                    <div class="gallery-overlay"><span>Активувати силу тролфейса</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/активировать силу тролфейса против гоблина добби.png" alt="Проти гобліна Доббі" loading="lazy">
+                    <div class="gallery-overlay"><span>Проти гобліна Доббі</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/активировать силу тролфейса гадкий я и подсиживатели.png" alt="Гадкий я і підсиживателі" loading="lazy">
+                    <div class="gallery-overlay"><span>Гадкий Я і Підсиживателі</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/друны і ома с гадким.jpg" alt="Друни і Ома з гадким" loading="lazy">
+                    <div class="gallery-overlay"><span>Друни і Ома з гадким</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/друны и ома с гадким.png" alt="Друни і Ома з гадким" loading="lazy">
+                    <div class="gallery-overlay"><span>Друни і Ома з гадким</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/подсиживатели троли.jpg" alt="Підсиживателі Тролі" loading="lazy">
+                    <div class="gallery-overlay"><span>Підсиживателі Тролі</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/покусывают стул.png" alt="Покусують Стул" loading="lazy">
+                    <div class="gallery-overlay"><span>Покусують Стул</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/що це таке.png" alt="Що це таке" loading="lazy">
+                    <div class="gallery-overlay"><span>Що це таке</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/що це таке оригинал.png" alt="Що це таке Оригінал" loading="lazy">
+                    <div class="gallery-overlay"><span>Що це таке Оригінал</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/шо це таке друны.jpg" alt="Шо це таке друни" loading="lazy">
+                    <div class="gallery-overlay"><span>Шо це таке друни</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/алкашка і роман.png" alt="Алкашка і Роман" loading="lazy">
+                    <div class="gallery-overlay"><span>Алкашка і Роман</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/Автоответчик.png" alt="Автовідповідач" loading="lazy">
+                    <div class="gallery-overlay"><span>Автовідповідач</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/PumpedUpKicks.png" alt="PumpedUpKicks" loading="lazy">
+                    <div class="gallery-overlay"><span>PumpedUpKicks</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/робинбобин.png" alt="Робінбобін" loading="lazy">
+                    <div class="gallery-overlay"><span>Робінбобін</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/шлепитпопит.png" alt="Шлепітпопіт" loading="lazy">
+                    <div class="gallery-overlay"><span>Шлепітпопіт</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/РобертР8.png" alt="Роберт Р8" loading="lazy">
+                    <div class="gallery-overlay"><span>Роберт Р8</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/діджей.png" alt="Діджей" loading="lazy">
+                    <div class="gallery-overlay"><span>Діджей</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/робертина.png" alt="Робертіна" loading="lazy">
+                    <div class="gallery-overlay"><span>Робертіна</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/робертусы и его семья.png" alt="Робертуси і його сім'я" loading="lazy">
+                    <div class="gallery-overlay"><span>Робертуси і його сім'я</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/мальчики.png" alt="Мальчики" loading="lazy">
+                    <div class="gallery-overlay"><span>Мальчики</span></div>
+                </div>
+
+                <!-- Чеп серія -->
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/чеп арбуз.png" alt="Чеп Арбуз" loading="lazy">
+                    <div class="gallery-overlay"><span>Чеп Арбуз</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/чеп обычный.png" alt="Чеп Звичайний" loading="lazy">
+                    <div class="gallery-overlay"><span>Чеп Звичайний</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/чеп колдун.png" alt="Чеп Колдун" loading="lazy">
+                    <div class="gallery-overlay"><span>Чеп Колдун</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/чеп хитрый.png" alt="Чеп Хітрий" loading="lazy">
+                    <div class="gallery-overlay"><span>Чеп Хітрий</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/чеп данила.png" alt="Чеп Данила" loading="lazy">
+                    <div class="gallery-overlay"><span>Чеп Данила</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/укр чеп.png" alt="Укр Чеп" loading="lazy">
+                    <div class="gallery-overlay"><span>Укр Чеп</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/царь чеп.png" alt="Цар Чеп" loading="lazy">
+                    <div class="gallery-overlay"><span>Цар Чеп</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/рус чеп.png" alt="Рус Чеп" loading="lazy">
+                    <div class="gallery-overlay"><span>Рус Чеп</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/казахстон чеп.png" alt="Казахстон Чеп" loading="lazy">
+                    <div class="gallery-overlay"><span>Казахстон Чеп</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/чюпеп.png" alt="Чюпеп" loading="lazy">
+                    <div class="gallery-overlay"><span>Чюпеп</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/чюпеп.jpg" alt="Чюпеп JPG" loading="lazy">
+                    <div class="gallery-overlay"><span>Чюпеп</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/чупапи.jpeg" alt="Чупапі" loading="lazy">
+                    <div class="gallery-overlay"><span>Чупапі</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/чупапи плавает.jpg" alt="Чупапі плаває" loading="lazy">
+                    <div class="gallery-overlay"><span>Чупапі плаває</span></div>
+                </div>
+
+                <!-- Гадкий я серія -->
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/гадкий я.png" alt="Гадкий Я" loading="lazy">
+                    <div class="gallery-overlay"><span>Гадкий Я</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/гадкий я (2).png" alt="Гадкий Я 2" loading="lazy">
+                    <div class="gallery-overlay"><span>Гадкий Я 2</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/гадкий я (3).png" alt="Гадкий Я 3" loading="lazy">
+                    <div class="gallery-overlay"><span>Гадкий Я 3</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/гадкий хатт.png" alt="Гадкий Хатт" loading="lazy">
+                    <div class="gallery-overlay"><span>Гадкий Хатт</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/бридкий я.png" alt="Бридкий Я" loading="lazy">
+                    <div class="gallery-overlay"><span>Бридкий Я</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/гадкий я лишь хочу.png" alt="Гадкий Я лиш хочу" loading="lazy">
+                    <div class="gallery-overlay"><span>Гадкий Я лиш хочу</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/робо я.png" alt="Робо Я" loading="lazy">
+                    <div class="gallery-overlay"><span>Робо Я</span></div>
+                </div>
+
+                <!-- Я лиш хочу серія -->
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/ома я лишь хочу.png" alt="Ома я лиш хочу" loading="lazy">
+                    <div class="gallery-overlay"><span>Ома я лиш хочу</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/чепчик я лишь хочу.png" alt="Чепчик я лиш хочу" loading="lazy">
+                    <div class="gallery-overlay"><span>Чепчик я лиш хочу</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/роберт я лишь хочу.png" alt="Роберт я лиш хочу" loading="lazy">
+                    <div class="gallery-overlay"><span>Роберт я лиш хочу</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/даун я лишь хочу.png" alt="Даун я лиш хочу" loading="lazy">
+                    <div class="gallery-overlay"><span>Даун я лиш хочу</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/хесус я лишь хочу.png" alt="Хесус я лиш хочу" loading="lazy">
+                    <div class="gallery-overlay"><span>Хесус я лиш хочу</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/робот я лишь хочу.png" alt="Робот я лиш хочу" loading="lazy">
+                    <div class="gallery-overlay"><span>Робот я лиш хочу</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/іісів я лишь хочу .png" alt="Іісів я лиш хочу" loading="lazy">
+                    <div class="gallery-overlay"><span>Іісів я лиш хочу</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/ІБО чотонько я лишь хочу.png" alt="ІБО чотонько я лиш хочу" loading="lazy">
+                    <div class="gallery-overlay"><span>ІБО чотонько я лиш хочу</span></div>
+                </div>
+
+                <!-- Інше -->
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/спанч бобі.png" alt="Спанч Бобі" loading="lazy">
+                    <div class="gallery-overlay"><span>Спанч Бобі</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/попитики.png" alt="Попітики" loading="lazy">
+                    <div class="gallery-overlay"><span>Попітики</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/томат ома.png" alt="Томат Ома" loading="lazy">
+                    <div class="gallery-overlay"><span>Томат Ома</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/пятки романы.png" alt="Пʼятки Романи" loading="lazy">
+                    <div class="gallery-overlay"><span>Пʼятки Романи</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рома пятка.png" alt="Рома Пʼятка" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Пʼятка</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/переговоры.png" alt="Переговори" loading="lazy">
+                    <div class="gallery-overlay"><span>Переговори</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/література романа.png" alt="Література Романа" loading="lazy">
+                    <div class="gallery-overlay"><span>Література Романа</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/література романа (ж).png" alt="Література Романа (Ж)" loading="lazy">
+                    <div class="gallery-overlay"><span>Література Романа (Ж)</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/література рональда.jpg" alt="Література Рональда" loading="lazy">
+                    <div class="gallery-overlay"><span>Література Рональда</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/топлес.png" alt="Топлес" loading="lazy">
+                    <div class="gallery-overlay"><span>Топлес</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/пологи романа.png" alt="Пологи Романа" loading="lazy">
+                    <div class="gallery-overlay"><span>Пологи Романа</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/сиксти севен.png" alt="Сіксті Севен" loading="lazy">
+                    <div class="gallery-overlay"><span>Сіксті Севен</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/67.png" alt="67" loading="lazy">
+                    <div class="gallery-overlay"><span>67</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/котик.jpg" alt="Котик" loading="lazy">
+                    <div class="gallery-overlay"><span>Котик</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/друны.png" alt="Друни" loading="lazy">
+                    <div class="gallery-overlay"><span>Друни</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/микита.jpg" alt="Микита" loading="lazy">
+                    <div class="gallery-overlay"><span>Микита</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/hobby horse🤘🏻.jpg" alt="Hobby Horse" loading="lazy">
+                    <div class="gallery-overlay"><span>Hobby Horse</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/пятка обезьяна.jpg" alt="Пʼятка обезʼяна" loading="lazy">
+                    <div class="gallery-overlay"><span>Пʼятка обезʼяна</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/пяточка.jpg" alt="Пʼяточка" loading="lazy">
+                    <div class="gallery-overlay"><span>Пʼяточка</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/энштейн.jpg" alt="Ейнштейн" loading="lazy">
+                    <div class="gallery-overlay"><span>Ейнштейн</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/сквидварт.jpg" alt="Сквідвард" loading="lazy">
+                    <div class="gallery-overlay"><span>Сквідвард</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/гадзила.jpg" alt="Годзіла" loading="lazy">
+                    <div class="gallery-overlay"><span>Годзіла</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/ома і муж.jpg" alt="Ома і муж" loading="lazy">
+                    <div class="gallery-overlay"><span>Ома і муж</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/халяльний стул.png" alt="Халяльний Стул" loading="lazy">
+                    <div class="gallery-overlay"><span>Халяльний Стул</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/беременність романов і його діти.png" alt="Беременність Романов" loading="lazy">
+                    <div class="gallery-overlay"><span>Беременність Романов і його діти</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/лезут по роматазу.jpg" alt="Лезуть по роматазу" loading="lazy">
+                    <div class="gallery-overlay"><span>Лезуть по роматазу</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/виконав студент роман горин.png" alt="Виконав Студент Роман Горін" loading="lazy">
+                    <div class="gallery-overlay"><span>Виконав Студент Роман Горін</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/ома с палочкой и подсиживателем.png" alt="Ома з палочкою" loading="lazy">
+                    <div class="gallery-overlay"><span>Ома з палочкою і підсиживателем</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/джабаоман.jpg" alt="ДжабаОман" loading="lazy">
+                    <div class="gallery-overlay"><span>ДжабаОман</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/подлазыши.jpg" alt="Підлазиші" loading="lazy">
+                    <div class="gallery-overlay"><span>Підлазиші</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/чутьчуть подлазышей.jpg" alt="Чутьчуть підлазишей" loading="lazy">
+                    <div class="gallery-overlay"><span>Чутьчуть підлазишей</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/ушки друны і ома.png" alt="Ушки Друни і Ома" loading="lazy">
+                    <div class="gallery-overlay"><span>Ушки Друни і Ома</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/манго оман.png" alt="Манго Оман" loading="lazy">
+                    <div class="gallery-overlay"><span>Манго Оман</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/робертск.png" alt="Робертск" loading="lazy">
+                    <div class="gallery-overlay"><span>Робертск</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/умний рома.png" alt="Розумний Рома" loading="lazy">
+                    <div class="gallery-overlay"><span>Розумний Рома</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/кеп і друни.png" alt="Кеп і Друни" loading="lazy">
+                    <div class="gallery-overlay"><span>Кеп і Друни</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/іркутск.png" alt="Іркутск" loading="lazy">
+                    <div class="gallery-overlay"><span>Іркутск</span></div>
+                </div>
+
+                <!-- AI Generated -->
+                <div class="gallery-item" data-category="ai">
+                    <img src="media/Gemini_Generated_Image_ks1k6pks1k6pks1k.png" alt="AI Генерація 1" loading="lazy">
+                    <div class="gallery-overlay"><span>AI Генерація</span></div>
+                </div>
+                <div class="gallery-item" data-category="ai">
+                    <img src="media/Gemini_Generated_Image_uma26wuma26wuma2.png" alt="AI Генерація 2" loading="lazy">
+                    <div class="gallery-overlay"><span>AI Генерація</span></div>
+                </div>
+                <div class="gallery-item" data-category="ai">
+                    <img src="media/Gemini_Generated_Image_nwi3tvnwi3tvnwi3.png" alt="AI Генерація 3" loading="lazy">
+                    <div class="gallery-overlay"><span>AI Генерація</span></div>
+                </div>
+                <div class="gallery-item" data-category="ai">
+                    <img src="media/Gemini_Generated_Image_4k7bow4k7bow4k7b.png" alt="AI Генерація 4" loading="lazy">
+                    <div class="gallery-overlay"><span>AI Генерація</span></div>
+                </div>
+                <div class="gallery-item" data-category="ai">
+                    <img src="media/Gemini_Generated_Image_efdktcefdktcefdk.png" alt="AI Генерація 5" loading="lazy">
+                    <div class="gallery-overlay"><span>AI Генерація</span></div>
+                </div>
+                <div class="gallery-item" data-category="ai">
+                    <img src="media/Gemini_Generated_Image_rr79y7rr79y7rr79.png" alt="AI Генерація 6" loading="lazy">
+                    <div class="gallery-overlay"><span>AI Генерація</span></div>
+                </div>
+                <div class="gallery-item" data-category="ai">
+                    <img src="media/Gemini_Generated_Image_z6m5xcz6m5xcz6m5.png" alt="AI Генерація 7" loading="lazy">
+                    <div class="gallery-overlay"><span>AI Генерація</span></div>
+                </div>
+                <div class="gallery-item" data-category="ai">
+                    <img src="media/Gemini_Generated_Image_wzv5jiwzv5jiwzv5.png" alt="AI Генерація 8" loading="lazy">
+                    <div class="gallery-overlay"><span>AI Генерація</span></div>
+                </div>
+
+                <!-- Фото з різних джерел -->
+                <div class="gallery-item" data-category="other">
+                    <img src="media/skinheads.jpg" alt="Skinheads" loading="lazy">
+                    <div class="gallery-overlay"><span>Skinheads</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/Фото романа горина.jpg" alt="Фото Романа Горіна" loading="lazy">
+                    <div class="gallery-overlay"><span>Фото Романа Горіна</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/крутой рома.jpg" alt="Крутой Рома" loading="lazy">
+                    <div class="gallery-overlay"><span>Крутой Рома</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/золотий рома.jpg" alt="Золотий Рома" loading="lazy">
+                    <div class="gallery-overlay"><span>Золотий Рома</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/королева звитов.jpg" alt="Королева Звітов" loading="lazy">
+                    <div class="gallery-overlay"><span>Королева Звітов</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/королева звитов2.jpg" alt="Королева Звітов 2" loading="lazy">
+                    <div class="gallery-overlay"><span>Королева Звітов 2</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/ромакоролькрасоты.png" alt="Рома Король Красоти" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома Король Красоти</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/ромчикрепочерепок.png" alt="Ромчик Череп" loading="lazy">
+                    <div class="gallery-overlay"><span>Ромчик Череп</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/собака оман.jpg" alt="Собака Оман" loading="lazy">
+                    <div class="gallery-overlay"><span>Собака Оман</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/navioman.jpg" alt="Навіоман" loading="lazy">
+                    <div class="gallery-overlay"><span>Навіоман</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/tierlist.png" alt="Тірліст" loading="lazy">
+                    <div class="gallery-overlay"><span>Тірліст</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/onal.jpg" alt="Onal" loading="lazy">
+                    <div class="gallery-overlay"><span>Onal</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/winlocker.jpg" alt="Winlocker" loading="lazy">
+                    <div class="gallery-overlay"><span>Winlocker</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/tanos.jpg" alt="Танос" loading="lazy">
+                    <div class="gallery-overlay"><span>Танос</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/dobriy.jpeg" alt="Добрий" loading="lazy">
+                    <div class="gallery-overlay"><span>Добрий</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/волтир вит.jpg" alt="Волтір Віт" loading="lazy">
+                    <div class="gallery-overlay"><span>Волтір Віт</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/image.png" alt="Image" loading="lazy">
+                    <div class="gallery-overlay"><span>Image</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/мисплей і друны.png" alt="Мисплей і Друни" loading="lazy">
+                    <div class="gallery-overlay"><span>Мисплей і Друни</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/микола василів.png" alt="Микола Василів" loading="lazy">
+                    <div class="gallery-overlay"><span>Микола Василів</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/микола василив.png" alt="Микола Василів 2" loading="lazy">
+                    <div class="gallery-overlay"><span>Микола Василів</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/мальчик наказан.png" alt="Мальчик наказан" loading="lazy">
+                    <div class="gallery-overlay"><span>Мальчик наказан</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/балабаник казино.png" alt="Балабанік казіно" loading="lazy">
+                    <div class="gallery-overlay"><span>Балабанік казіно</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/сидит же.png" alt="Сидить же" loading="lazy">
+                    <div class="gallery-overlay"><span>Сидить же</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/ничего ж не поменялось.png" alt="Нічого не помінялось" loading="lazy">
+                    <div class="gallery-overlay"><span>Нічого ж не помінялось</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/бля лан роман.png" alt="Бля лан Роман" loading="lazy">
+                    <div class="gallery-overlay"><span>Бля лан Роман</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/блялан похуй.png" alt="Блялан" loading="lazy">
+                    <div class="gallery-overlay"><span>Блялан</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/бля лан пох хрю.png" alt="Бля лан пох хрю" loading="lazy">
+                    <div class="gallery-overlay"><span>Бля лан пох хрю</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/даун.png" alt="Даун" loading="lazy">
+                    <div class="gallery-overlay"><span>Даун</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/умний даун.png" alt="Розумний Даун" loading="lazy">
+                    <div class="gallery-overlay"><span>Розумний Даун</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/песик слон.png" alt="Песик Слон" loading="lazy">
+                    <div class="gallery-overlay"><span>Песик Слон</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/алексей навальний.png" alt="Алексей Навальний" loading="lazy">
+                    <div class="gallery-overlay"><span>Алексей Навальний</span></div>
+                </div>
+                <div class="gallery-item" data-category="edit">
+                    <img src="media/джон порк.png" alt="Джон Порк" loading="lazy">
+                    <div class="gallery-overlay"><span>Джон Порк</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/дмитрий.png" alt="Дмитрій" loading="lazy">
+                    <div class="gallery-overlay"><span>Дмитрій</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/ыыыы.png" alt="Ыыыы" loading="lazy">
+                    <div class="gallery-overlay"><span>Ыыыы</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/мелстрой гейм.png" alt="Мелстрой Гейм" loading="lazy">
+                    <div class="gallery-overlay"><span>Мелстрой Гейм</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/ііісів вісіірііініввіч.png" alt="Ііісів" loading="lazy">
+                    <div class="gallery-overlay"><span>Ііісів Вісіірііініввіч</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/іосиф сталін.png" alt="Іосиф Сталін" loading="lazy">
+                    <div class="gallery-overlay"><span>Іосиф Сталін</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/phymosis.png" alt="Phymosis" loading="lazy">
+                    <div class="gallery-overlay"><span>Phymosis</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/потужно.jpeg" alt="Потужно" loading="lazy">
+                    <div class="gallery-overlay"><span>Потужно</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/літвін.jpeg" alt="Літвін" loading="lazy">
+                    <div class="gallery-overlay"><span>Літвін</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/даун баскетбол.jpg" alt="Даун Баскетбол" loading="lazy">
+                    <div class="gallery-overlay"><span>Даун Баскетбол</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/оружейный мастер.png" alt="Зброярний Майстер" loading="lazy">
+                    <div class="gallery-overlay"><span>Зброярний Майстер</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/бабушка тролфейс.gif" alt="Бабуся Тролфейс" loading="lazy">
+                    <div class="gallery-overlay"><span>Бабуся Тролфейс</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/газики.jpg" alt="Газіки" loading="lazy">
+                    <div class="gallery-overlay"><span>Газіки</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/robert.jpg" alt="Robert" loading="lazy">
+                    <div class="gallery-overlay"><span>Robert</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/вольтер війт.jpg" alt="Вольтер Війт" loading="lazy">
+                    <div class="gallery-overlay"><span>Вольтер Війт</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/дональд даг.jpg" alt="Дональд Даг" loading="lazy">
+                    <div class="gallery-overlay"><span>Дональд Даг</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/пузико.jpg" alt="Пузіко" loading="lazy">
+                    <div class="gallery-overlay"><span>Пузіко</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/царь Бiмба.jpg" alt="Цар Бімба" loading="lazy">
+                    <div class="gallery-overlay"><span>Цар Бімба</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/робот горин.jpg" alt="Робот Горін" loading="lazy">
+                    <div class="gallery-overlay"><span>Робот Горін</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/MANGO_PUMPED_UP.jpg" alt="MANGO PUMPED UP" loading="lazy">
+                    <div class="gallery-overlay"><span>MANGO PUMPED UP</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/ВААААА.png" alt="ВААААА" loading="lazy">
+                    <div class="gallery-overlay"><span>ВААААА</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/звитина.jpg" alt="Звітіна" loading="lazy">
+                    <div class="gallery-overlay"><span>Звітіна</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/хесус.jpg" alt="Хесус" loading="lazy">
+                    <div class="gallery-overlay"><span>Хесус</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/images.jpg" alt="Images" loading="lazy">
+                    <div class="gallery-overlay"><span>Images</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/unnamed.jpg" alt="Unnamed" loading="lazy">
+                    <div class="gallery-overlay"><span>Unnamed</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/unnamed (1).jpg" alt="Unnamed 1" loading="lazy">
+                    <div class="gallery-overlay"><span>Unnamed 1</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/unnamed (2).jpg" alt="Unnamed 2" loading="lazy">
+                    <div class="gallery-overlay"><span>Unnamed 2</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/e379f561-9aae-4ce7-9dc9-b714a8473eb0.jpg" alt="Photo" loading="lazy">
+                    <div class="gallery-overlay"><span>Photo</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/ccf389bb-8439-4f14-8463-61ad07b175e9.jpg" alt="Photo" loading="lazy">
+                    <div class="gallery-overlay"><span>Photo</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/0f69d336-683a-4e37-8088-70c277fee8dd.png" alt="Photo" loading="lazy">
+                    <div class="gallery-overlay"><span>Photo</span></div>
+                </div>
+
+                <!-- TikTok/Web images -->
+                <div class="gallery-item" data-category="other">
+                    <img src="media/47092481a70d497a91dd3846426a99be~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/6074d10ad4bd4370933eaf7971e5c81e~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/769d9299664c43c2b4f8610705e60ba8~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/c50b6a307d974f95915ed10af517ebb4~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/aef133d168814c5ab02fbcf2d463c7d1~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/ea71a1b113ab45028cd80cfb57018b82~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/469e94ac4fb348118186166802bbffa7~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/25ba28d70bfd4afd88f02af59e84c9e0~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/a2bb1b4c89fe48fa9e261bb2f6e8c0dd~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/5183469d602343d4a46a62e90b3b0132~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/549140940271432589ca955337910026~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/19136fc0de1544758da9f25ad7be2897~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/523277c1c45e460a911a6b1be89ed6af~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/af5b88b05f3f41459addea0a36200a8d~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/15db5409ddb64b78afb129e01b79dd79~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/e5f96ad0f2a24b1090f2bf3e2d3c4236~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/83192a3812504ebb9599ec5a5407f349~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/af90043897084ff38b17bac8461fab90~tplv-jj85edgx6n-image-origin.jpeg" alt="TikTok" loading="lazy">
+                    <div class="gallery-overlay"><span>TikTok</span></div>
+                </div>
+
+                <!-- Other misc -->
+                <div class="gallery-item" data-category="other">
+                    <img src="media/trahos.jpg" alt="Trahos" loading="lazy">
+                    <div class="gallery-overlay"><span>Trahos</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/chotakepenis.jpg" alt="Chotakepenis" loading="lazy">
+                    <div class="gallery-overlay"><span>Chotakepenis</span></div>
+                </div>
+                <div class="gallery-item" data-category="meme">
+                    <img src="media/рома умер на сво.png" alt="Рома СВО" loading="lazy">
+                    <div class="gallery-overlay"><span>Рома на СВО</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/чеп війна.jpg" alt="Чеп Війна" loading="lazy">
+                    <div class="gallery-overlay"><span>Чеп Війна</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/свинолет.jpg" alt="Свинолет" loading="lazy">
+                    <div class="gallery-overlay"><span>Свинолет</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/абсолют.jpg" alt="Абсолют" loading="lazy">
+                    <div class="gallery-overlay"><span>Абсолют</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/абсолютик.jpg" alt="Абсолютік" loading="lazy">
+                    <div class="gallery-overlay"><span>Абсолютік</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/абсолютище.jpg" alt="Абсолютіще" loading="lazy">
+                    <div class="gallery-overlay"><span>Абсолютіще</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/трамп.jpg" alt="Трамп" loading="lazy">
+                    <div class="gallery-overlay"><span>Трамп</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/путчинын.jpg" alt="Путчинин" loading="lazy">
+                    <div class="gallery-overlay"><span>Путчинін</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/негр інвалід.png" alt="Негр Інвалід" loading="lazy">
+                    <div class="gallery-overlay"><span>Негр Інвалід</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/роман негр інвалід.png" alt="Роман Негр Інвалід" loading="lazy">
+                    <div class="gallery-overlay"><span>Роман Негр Інвалід</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/говно чеп.png" alt="Говно Чеп" loading="lazy">
+                    <div class="gallery-overlay"><span>Говно Чеп</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/мисплей порно.png" alt="Мисплей Порно" loading="lazy">
+                    <div class="gallery-overlay"><span>Мисплей Порно</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/тетеп_💀.jpg" alt="Тетеп" loading="lazy">
+                    <div class="gallery-overlay"><span>Тетеп</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/гетеро не існує.jpg" alt="Гетеро не існує" loading="lazy">
+                    <div class="gallery-overlay"><span>Гетеро не існує</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/ібі чітінкі.jpg" alt="Ібі чітінкі" loading="lazy">
+                    <div class="gallery-overlay"><span>Ібі чітінкі</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/якое фото краще 2.jpg" alt="Яке фото краще" loading="lazy">
+                    <div class="gallery-overlay"><span>Яке фото краще</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/дима дзвонить.jpg" alt="Діма Дзвонить" loading="lazy">
+                    <div class="gallery-overlay"><span>Діма Дзвонить</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/довел деда.jpg" alt="Довел деда" loading="lazy">
+                    <div class="gallery-overlay"><span>Довел деда</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/ктото їде.jpg" alt="Хтось їде" loading="lazy">
+                    <div class="gallery-overlay"><span>Хтось їде</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/просроченіколбаскі.jpg" alt="Прострочені ковбаскі" loading="lazy">
+                    <div class="gallery-overlay"><span>Прострочені ковбаскі</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/варенье.jpg" alt="Варення" loading="lazy">
+                    <div class="gallery-overlay"><span>Варення</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/кислинка.jpg" alt="Кислинка" loading="lazy">
+                    <div class="gallery-overlay"><span>Кислинка</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/столбняк.jpg" alt="Стовбняк" loading="lazy">
+                    <div class="gallery-overlay"><span>Стовбняк</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/балашиха.jpg" alt="Балашиха" loading="lazy">
+                    <div class="gallery-overlay"><span>Балашиха</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/головавочке.jpg" alt="Головавочке" loading="lazy">
+                    <div class="gallery-overlay"><span>Головавочке</span></div>
+                </div>
+                <div class="gallery-item" data-category="other">
+                    <img src="media/япукнутыпоймай.jpg" alt="Я пукну ти поймай" loading="lazy">
+                    <div class="gallery-overlay"><span>Я пукну ти поймай</span></div>
+                </div>
+            </div>
+
+            <button class="load-more-btn" id="loadMore">Показати ще</button>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="videos-section" id="videos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🎬 Відео</span>
+                <h2 class="section-title">Відео Колекція</h2>
+                <p class="section-desc">Найкращі відео з Романом Горіним</p>
+            </div>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <video controls preload="metadata" poster="">
+                        <source src="media/роман горин.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Роман Горін</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/гадкий я видео.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Гадкий Я Відео</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Carnage_Master.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Carnage Master</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/позитивный.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Позитивний</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Видео_готово_по_запросу.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Відео Готово По Запиту</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Oživljavanje_slike_u_video.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Оживлення Зображення у Відео</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Oživljavanje_slike_u_video (1).mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Оживлення Зображення у Відео 2</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Oživljavanje_romana_u_video_format.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Оживлення Романа у Відео</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Оживление_фото_друзей_в_видео.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Оживлення Фото Друзів</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/звітіна.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Звітіна</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Анимация_красивого_фото.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Анімація Красивого Фото</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Download.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Download</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Стул_совершает_намаз_Видео.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Стілець Здійснює Намаз</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Оживи_город_Видео_готово.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Оживи Місто</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/русома бежит.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Русома Біжить</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Котик_бегает_пукает_и_шлепает.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Котик Бігає Пукає і Шльопає</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Animacija_fotografije_i_generisanje_videa.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Анімація Фотографії</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Анимација_лика_из_прикола.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Анімація Обличчя з Приколу</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/Створення_відео_звіту_за_запитом.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info"><h3>Створення Відео Звіту</h3></div>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="media/copy_7EEAAC18-8B5A-459F-AABA-F61251385774.mov" type="video/quicktime">
+                    </video>
+                    <div class="video-info"><h3>Спеціальне Відео</h3></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Section -->
+    <section class="audio-section" id="audio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🎵 Аудіо</span>
+                <h2 class="section-title">Аудіо Колекція</h2>
+                <p class="section-desc">Музика та записи</p>
+            </div>
+            <div class="audio-grid">
+                <div class="audio-card">
+                    <div class="audio-visual">
+                        <div class="audio-wave">
+                            <span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="audio-info">
+                        <h3>Прощавай Роман</h3>
+                        <audio controls preload="metadata">
+                            <source src="media/Прощавай_Роман.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+                <div class="audio-card">
+                    <div class="audio-visual">
+                        <div class="audio-wave">
+                            <span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="audio-info">
+                        <h3>Telegram Golem</h3>
+                        <audio controls preload="metadata">
+                            <source src="media/Telegram_Golem.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+                <div class="audio-card">
+                    <div class="audio-visual">
+                        <div class="audio-wave">
+                            <span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="audio-info">
+                        <h3>Новий Запис 10</h3>
+                        <audio controls preload="metadata">
+                            <source src="media/Новая запись 10.m4a" type="audio/mp4">
+                        </audio>
+                    </div>
+                </div>
+                <div class="audio-card">
+                    <div class="audio-visual">
+                        <div class="audio-wave">
+                            <span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="audio-info">
+                        <h3>Новий Запис 11</h3>
+                        <audio controls preload="metadata">
+                            <source src="media/Новая запись 11.m4a" type="audio/mp4">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots-section" id="screenshots">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">📸 Скріншоти</span>
+                <h2 class="section-title">Скріншоти</h2>
+                <p class="section-desc">Колекція скріншотів з різних часів</p>
+            </div>
+            <div class="screenshots-grid" id="screenshotsGrid">
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 135613.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 020319.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 020219.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 020055.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 015952.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 015938.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 015742.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 015717.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 015038.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 014837.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 014820.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-08 014709.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">08.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-06 015402.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-06 015323.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-06 015308.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-06 014912.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-06 014100.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-06 013957.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-06 013948.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-06 013843.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-06 013627.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-05 021347.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">05.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-05 020545.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">05.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-05 020042.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">05.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-05 015520.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">05.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-05 014635.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">05.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-05 014114.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">05.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-05-05 013648.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">05.05.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-27 000103.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">27.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-22 234714.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">22.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-22 014541.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">22.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-22 014101.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">22.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-22 013807.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">22.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-22 013742.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">22.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-22 010120.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">22.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-22 005804.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">22.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-22 005711.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">22.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-15 224334.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">15.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-14 103821.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">14.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-13 011433.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">13.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-13 011311.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">13.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-13 011145.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">13.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-12 221225.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">12.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 030731.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 030618.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 030549.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 030534.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 030232.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 025404.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 024634.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 021044.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 020558.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 020543.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 015456.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 014610.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 013052.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 012300.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 011448.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-11 010929.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">11.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-04-06 011259.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.04.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-03-31 213107.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">31.03.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-03-29 013140.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">29.03.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-03-23 224819.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">23.03.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-03-23 224545.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">23.03.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-03-17 003816.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">17.03.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-03-15 013453.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">15.03.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-03-09 000239.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">09.03.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-03-06 000227.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.03.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-25 015813.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">25.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-25 015714.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">25.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-24 225313.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">24.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-13 144127.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">13.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-09 221616.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">09.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-09 221612.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">09.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-09 221552.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">09.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-06 035531.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-06 034904.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">06.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-05 124509.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">05.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-02-05 000952.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">05.02.2026</div></div>
+                <div class="screenshot-item"><img src="media/Снимок экрана 2026-01-29 005059.png" alt="Screenshot" loading="lazy"><div class="screenshot-date">29.01.2026</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">👑</span>
+                    <span class="logo-text">Роман<span class="accent">Горін</span></span>
+                </div>
+                <p class="footer-text">Ексклюзивна колекція приколів та мемів</p>
+                <div class="footer-divider"></div>
+                <p class="footer-copyright">&copy; 2026 Роман Горін Fan Page. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev">&#10094;</button>
+        <button class="lightbox-next" id="lightboxNext">&#10095;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImg">
+        </div>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Наверх">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
